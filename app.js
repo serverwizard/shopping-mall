@@ -27,7 +27,7 @@ db.sequelize.authenticate()
     .then(() => {
         console.log('Connection has been established successfully.');
 
-        // TODO DB에 테이블 자동으로 생성해줌
+        // TODO 서버가 뜰 때, DB 테이블 자동으로 생성해줌
         return db.sequelize.sync();
     })
     .then(() => {

@@ -18,7 +18,8 @@ const sequelize = new Sequelize(process.env.DATABASE,
         }
     });
 
-let db = [];
+// 모듈로 사용하기 위해 db 객체를 선언
+let db = {};
 
 // TODO models 디렉토리에 있는 index.js 파일을 제외한 모든 파일을 읽어와서 엔티티 만들어 주는 부분
 fs.readdirSync(__dirname)
