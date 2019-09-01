@@ -11,9 +11,30 @@
             작성일 : {{ product.dateFormat( product.createdAt ) }}
         </div>
 
+        {% if product.thumbnail %}
+        <p>
+            <img src="/uploads/{{ product.thumbnail }}" style="max-width: 100%"/>
+        </p>
+        {% endif %}
+
         {{ product.description }}
 
-        <hr />
+        <hr/>
+
+        <ul>
+            {% for memo in product.Memo %}
+            <li>
+                {{ memo.content }}
+                (
+                <a href="/admin/products/delete/{{ product.id }}/{{ memo.id }}"
+                   onclick="return confirm('삭제하시겠습니까?')">
+                    삭제
+                </a>
+                )
+            </li>
+            {% endfor %}
+        </ul>
+
         메모작성하기
         <form action="" method="post">
             <textarea class="form-control" name="content" required></textarea>
@@ -25,7 +46,6 @@
 
 <a href="/admin/products" class="btn btn-default">목록으로</a>
 <a href="/admin/products/edit/{{ product.id }}" class="btn btn-primary">수정</a>
-
 
 
 {% endblock %}
