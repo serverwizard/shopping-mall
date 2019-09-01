@@ -1,0 +1,29 @@
+{% set title = "계약 등록" %}
+{% extends "layout/base.html" %}
+
+{% block content -%}
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>
+    <table class="table table-bordered">
+        <tr>
+            <th>계약명</th>
+            <td><input type="text" name="name" value="{{contact.name}}" class="form-control"/></td>
+        </tr>
+        <tr>
+            <th>계약증명서</th>
+            <td>
+                <input type="file" name="certificate"/>
+                {% if product.thumbnail %}
+                <a href="/uploads/{{ contact.certificate }}" target="_blank">업로드 이미지 보기</a>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td><input type="text" name="description" value="{{contact.description}}" class="form-control"/></td>
+        </tr>
+    </table>
+    <button class="btn btn-primary">작성하기</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% set title = "계약서 : 상세페이지" %}
+{% extends "layout/base.html" %}
+
+{% block content -%}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        {{ contact.name }}
+    </div>
+    <div class="panel-body">
+        <div style="padding-bottom: 10px">
+            작성일 : {{ contact.dateFormat( contact.createdAt ) }}
+        </div>
+
+        {% if contact.certificate %}
+        <p>
+            <img src="/uploads/{{ contact.certificate }}" style="max-width: 100%"/>
+        </p>
+        {% endif %}
+
+        {{ contact.description }}
+
+        <hr/>
+
+        <ul>
+            {% for memo in contact.Memo %}
+            <li>
+                {{ memo.content }}
+                (
+                <a href="/contacts/delete/{{ contact.id }}/{{ memo.id }}"
+                   onclick="return confirm('삭제하시겠습니까?')">
+                    삭제
+                </a>
+                )
+            </li>
+            {% endfor %}
+        </ul>
+
+        메모작성하기
+        <form action="" method="post">
+            <textarea class="form-control" name="content" required></textarea>
+            <button class="btn btn-primary" style="margin-top: 10px">메모작성</button>
+        </form>
+
+    </div>
+</div>
+
+<a href="/contacts" class="btn btn-default">목록으로</a>
+<a href="/contacts/edit/{{ contact.id }}" class="btn btn-primary">수정</a>
+
+
+{% endblock %}
