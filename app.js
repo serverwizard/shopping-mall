@@ -18,6 +18,7 @@ const express = require('express');
 const nunjucks = require('nunjucks');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 // db 관련
 const db = require('./models');
@@ -27,6 +28,7 @@ db.sequelize.authenticate()
     .then(() => {
         console.log('Connection has been established successfully.');
 
+        // return db.sequelize.drop();
         // TODO 서버가 뜰 때, DB 테이블 자동으로 생성해줌
         return db.sequelize.sync();
     })
@@ -38,6 +40,7 @@ db.sequelize.authenticate()
     });
 
 const admin = require('./routes/admin');
+const contacts = require('./routes/contacts');
 
 const app = express();
 const port = 3000;
@@ -56,7 +59,15 @@ nunjucks.configure('template', {
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
+
+// '/uploads': 웹 URL, express.static('uploads'): 폴더 위치
+app.use('/uploads', express.static('uploads'));
+
+// 모든 라우터에 적용할 미드웨어 설정
 app.use('/admin', admin);
+app.use('/contacts', contacts);
+
 
 app.get('/', (_, res) => {
     res.send('express framework');
