@@ -14,11 +14,26 @@
  *
  */
 
+/**
+ * redis 에 세션을 체크하는 미들웨어
+ * css, js인 정적 파일을 S3에 저장하는 이유: 서버 부하 줄여줌 (요청 최소화)
+ */
 const express = require('express');
 const nunjucks = require('nunjucks');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+
+//flash  메시지
+const flash = require('connect-flash');
+
+//passport 로그인
+const passport = require('passport');
+const session = require('express-session');
+
+// redis
+const client = require('./config/redis');
+const RedisStore = require('connect-redis')(session);
 
 // db 관련
 const db = require('./models');
@@ -41,6 +56,8 @@ db.sequelize.authenticate()
 
 const admin = require('./routes/admin');
 const contacts = require('./routes/contacts');
+const accounts = require('./routes/accounts');
+const auth = require('./routes/auth');
 
 const app = express();
 const port = 3000;
@@ -62,20 +79,46 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 // '/uploads': 웹 URL, express.static('uploads'): 폴더 위치
+// static 폴더 위치 설정
 app.use('/uploads', express.static('uploads'));
+
+//session 관련 셋팅
+const sess = {
+    secret: 'fastcampus',
+    resave: false,
+    // saveUninitialized: true,
+    name: 'sessionId',
+    cookie: {
+        maxAge: 2000 * 60 * 60, //지속시간 2시간
+        httpOnly: true,
+        secure: false,
+    },
+    store: new RedisStore({client}),
+};
+
+//passport(인증) 적용
+app.use(session(sess)); // 대부분의 미들웨어들이 request의 변수를 추가하는 꼴로 동작 (request.session)
+app.use(passport.initialize()); // authenticate 추가
+app.use(passport.session(sess));
+
+//플래시 메시지 관련
+app.use(flash());
+
+// 세션 검사 미들웨어
+const sessionChecker = require('./middleware/session');
+// 세션 검사
+app.use(sessionChecker);
+
 
 // 모든 라우터에 적용할 미드웨어 설정
 app.use('/admin', admin);
 app.use('/contacts', contacts);
-
+app.use('/accounts', accounts);
+app.use('/auth', auth);
 
 app.get('/', (_, res) => {
-    res.send('express framework');
+    res.send('dashboard');
 });
-
-// app.get('/admin', (req, res) => {
-//    res.send('admin page');
-// });
 
 app.listen(port, () => {
     console.log('Express listening on port', port);
