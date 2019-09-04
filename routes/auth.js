@@ -48,6 +48,7 @@ passport.use(new FacebookStrategy({
                 }
             });
 
+            let user;
             if (!exist) {
                 // 존재하면 바로 세션에 등록
                 user = await models.User.create({
