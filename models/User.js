@@ -24,6 +24,23 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
 
+    // 사용자 모델 관계도
+    User.associate = (models) => {
+        // 상품 모델에 외부키를 건다
+        // onDelete 옵션의 경우 사용자 하나가 삭제되면 외부키가 걸린 상품들도 싹다 삭제해준다 단 sync를 다시 해줘야됨
+        // as 의 경우 모델명과 똑같이 하지 않는다 Products (x)
+        User.hasMany(
+            models.Products,
+            {
+                as: 'Product',
+                foreignKey: 'user_id',
+                sourceKey: 'id' ,
+                onDelete: 'CASCADE'
+            }
+        );
+
+    };
+
     // sequelize hook 사용, accounts 라우터에서 req.body.password로 직접 핸들링해도 됨
     User.beforeCreate((user, _) => {
         user.password = passwordHash(user.password);
