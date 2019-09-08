@@ -48,7 +48,7 @@ router.get('/products', paginate.middleware(3, 50), async (req, res) => {
                 ],
                 limit: req.query.limit,
                 offset: req.offset,
-                order: [['created_t', 'DESC']]
+                order: [['created_at', 'DESC']]
             }),
             models.Products.count()
         ]);
