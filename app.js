@@ -18,6 +18,7 @@
  * redis 에 세션을 체크하는 미들웨어
  * css, js인 정적 파일을 S3에 저장하는 이유: 서버 부하 줄여줌 (요청 최소화)
  */
+
 const express = require('express');
 const nunjucks = require('nunjucks');
 const logger = require('morgan');
@@ -34,6 +35,9 @@ const session = require('express-session');
 // redis
 const client = require('./config/redis');
 const RedisStore = require('connect-redis')(session);
+
+// 세션 검사 미들웨어
+const sessionChecker = require('./middleware/session');
 
 // db 관련
 const db = require('./models');
@@ -54,11 +58,14 @@ db.sequelize.authenticate()
         console.error('Unable to connect to the database:', err);
     });
 
+const home = require('./routes/home.js');
 const admin = require('./routes/admin');
 const contacts = require('./routes/contacts');
 const accounts = require('./routes/accounts');
 const auth = require('./routes/auth');
-const githubAuth = require('./routes/github-auth');
+const kakaoOAuth = require('./routes/auth-kakao');
+const githubAuth = require('./routes/auth-github');
+const chat = require('./routes/chat');
 
 const app = express();
 const port = 3000;
@@ -87,7 +94,7 @@ app.use('/uploads', express.static('uploads'));
 const sess = {
     secret: 'fastcampus',
     resave: false,
-    // saveUninitialized: true,
+    saveUninitialized: false,
     name: 'sessionId',
     cookie: {
         maxAge: 2000 * 60 * 60, //지속시간 2시간
@@ -105,22 +112,28 @@ app.use(passport.session(sess));
 //플래시 메시지 관련
 app.use(flash());
 
-// 세션 검사 미들웨어
-const sessionChecker = require('./middleware/session');
+// 로그인 여부를 전달함, 해당 미들웨어는 모든 router 위에 두어야 에러가 안난다
+// 이렇게하면 라우터마다 isLogin 변수를 안내려줘도 됨
+// 글로벌 변수를 선언하는 방법
+app.use((req, res, next) => {
+    app.locals.isLogin = req.isAuthenticated();
+    //app.locals.urlparameter = req.url; //현재 url 정보를 보내고 싶으면 이와같이 셋팅
+    //app.locals.userData = req.user; //사용 정보를 보내고 싶으면 이와같이 셋팅
+    next();
+});
+
 // 세션 검사
 app.use(sessionChecker);
 
 
-// 모든 라우터에 적용할 미드웨어 설정
+app.use('/', home);
 app.use('/admin', admin);
 app.use('/contacts', contacts);
 app.use('/accounts', accounts);
 app.use('/auth/github', githubAuth);
+app.use('/auth/kakao', kakaoOAuth);
 app.use('/auth', auth);
-
-app.get('/', (_, res) => {
-    res.send('dashboard');
-});
+app.use('/chat', chat);
 
 app.listen(port, () => {
     console.log('Express listening on port', port);
