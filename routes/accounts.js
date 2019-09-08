@@ -8,7 +8,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const passwordHash = require('../helpers/passwordHash');
 
 // Registers a function used to serialize user objects into the session. (로그인 할 때, 딱 한번만)
-passport.serializeUser((user, done) => { // callback 함수가 실행됨
+passport.serializeUser((user, done) => { // callback 함수가 실행됨, Strategy 성공 시 호출됨
     console.log('serializeUser');
     done(null, user);
 });
@@ -22,8 +22,8 @@ passport.deserializeUser((user, done) => {
 });
 
 passport.use(new LocalStrategy({
-        usernameField: 'username',
-        passwordField: 'password',
+        usernameField: 'username', // input의 name명과 일치해야 함
+        passwordField: 'password', // input의 name명과 일치해야 함
         passReqToCallback: true
     },
     async (req, username, password, done) => {
@@ -35,7 +35,8 @@ passport.use(new LocalStrategy({
                 password: passwordHash(password),
             },
             // json 응답 값 뿌려줄 때, exclude
-            // attributes: { exclude: ['password'] }
+            // 내가 보여주고 싶은 필드만 선언
+            attributes: {exclude: ['password']}
         });
         // 유저에서 조회되지 않을시
         if (!user) {
@@ -45,6 +46,7 @@ passport.use(new LocalStrategy({
         } else {
             console.log('user : ' + user);
             console.log('user.dataValues : ' + user.dataValues);
+
             return done(null, user.dataValues);
         }
     }
@@ -54,19 +56,26 @@ router.get('/', (_, res) => {
     res.send('account app');
 });
 
-router.get('/join', (_, res) => {
-    res.render('accounts/join.html');
+router.get('/join', (req, res) => {
+    res.render('accounts/join.html', {joinError: req.flash('joinError')});
 });
 
 router.post('/join', async (req, res) => {
-    // TODO 이미 회원가입 여부 확인
-    try {
-        await models.User.create(req.body);
-        res.send('<script>alert("회원가입 성공");location.href="/accounts/login";</script>');
+    // 회원가입 여부 확인
+    let savedUser = await models.User.findOne({
+        where: {
+            username: req.body.username
+        }
+    });
 
-    } catch (e) {
-
+    if (savedUser) {
+        req.flash('joinError', '이미 회원가입된 이메일입니다.');
+        return res.redirect('/accounts/join');
     }
+
+    await models.User.create(req.body);
+    res.send('<script>alert("회원가입 성공");location.href="/accounts/login";</script>');
+
 });
 
 router.get('/login', (req, res) => {
@@ -80,11 +89,12 @@ router.post('/login',
         failureFlash: true
     }),
     (_, res) => {
-        res.send('<script>alert("로그인 성공");location.href="/accounts/success";</script>');
+        res.send('<script>alert("로그인 성공");location.href="/";</script>');
     }
 );
 
 router.get('/success', (req, res) => {
+
     res.send(req.user);
 });
 
