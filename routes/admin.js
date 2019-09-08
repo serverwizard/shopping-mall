@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const models = require('../models');
+const loginRequired = require('../helpers/loginRequired');
+
+const paginate = require('express-paginate');
 
 // csrf 셋팅
 const csrf = require('csurf');
@@ -29,23 +32,75 @@ router.get('/', (req, res) => {
     res.send('admin url 입니다.');
 });
 
-router.get('/products', async (_, res) => {
+/**
+ * offset : 시작지점
+ */
+router.get('/products', paginate.middleware(3, 50), async (req, res) => {
     try {
-        const products = await models.Products.findAll();
-        res.render('admin/products.html', {products: products});
+        const [products, totalCount] = await Promise.all([
+            models.Products.findAll({
+                include: [
+                    {
+                        model: models.User,
+                        as: 'Owner',
+                        attributes: ['username', 'displayname']
+                    },
+                ],
+                limit: req.query.limit,
+                offset: req.offset,
+                order: [['created_t', 'DESC']]
+            }),
+            models.Products.count()
+        ]);
+
+        const pageCount = Math.ceil(totalCount / req.query.limit);
+
+        // 페이지 번호의 목록을 가져옴 (아래에 총 4개의 페이지 번호만 노출됨)
+        // 함수 호출의 결과가 함수여서, 따라서 ()() 식 구조가 나옴
+        //    -> 이렇게 사용하는 이유는 클로저 개념을 이용하기 위해
+        // 클로저를 이용하면 편한 경우가 몇몇 경우가 있다. (페이지네이션)
+        /**
+         *
+         * function test(req) {
+         *     var result = 0;
+         *     return function(num) {
+         *         return result+num;
+         *     }
+         * }
+         *
+         * test(1)(2);
+         * test(1)(2);
+         * test(1)(2);
+         * test(1)(2);
+         */
+        const pages = paginate.getArrayPages(req)(4, pageCount, req.query.page);
+
+        res.render('admin/products.html', {products, pages, pageCount});
+
     } catch (e) {
-        console.error(e);
+
     }
+
 });
 
-router.get('/products/write', csrfProtection, (req, res) => {
+router.get('/products/write', loginRequired, csrfProtection, (req, res) => {
     res.render('admin/form.html', {csrfToken: req.csrfToken()});
 });
 
-router.post('/products/write', upload.single('thumbnail'), csrfProtection, async (req, res) => {
+router.post('/products/write', loginRequired, upload.single('thumbnail'), csrfProtection, async (req, res) => {
     try {
+
         req.body.thumbnail = (req.file) ? req.file.filename : "";
-        await models.Products.create(req.body);
+
+        // 유저를 가져온다음에 저장
+        const user = await models.User.findByPk(req.user.id);
+        await user.createProduct(req.body);
+
+        // 이런식으로 사용해도 되지만... 어떤게 더 의미가 있는지 고민해볼 것
+        // req.body.thumbnail = (req.file) ? req.file.filename : "";
+        // req.user_id = req.user.id;
+        // await models.Products.create(req.body);
+
         res.redirect('/admin/products');
 
     } catch (e) {
@@ -66,12 +121,12 @@ router.get('/products/detail/:id', async (req, res) => {
     res.render('admin/detail.html', {product});
 });
 
-router.get('/products/edit/:id', csrfProtection, async (req, res) => {
+router.get('/products/edit/:id', loginRequired, csrfProtection, async (req, res) => {
     const product = await models.Products.findByPk(req.params.id);
     res.render('admin/form.html', {product, csrfToken: req.csrfToken()});
 });
 
-router.post('/products/edit/:id', upload.single('thumbnail'), csrfProtection, async (req, res) => {
+router.post('/products/edit/:id', loginRequired, upload.single('thumbnail'), csrfProtection, async (req, res) => {
     try {
         // DB에 저장돼있는 파일 read
         const product = await models.Products.findByPk(req.params.id);

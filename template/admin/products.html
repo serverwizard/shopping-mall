@@ -25,4 +25,30 @@
 
 <a href="/admin/products/write" class="btn btn-default">작성하기</a>
 
+<nav>
+    <ul class="pagination">
+        {% if paginate.hasPreviousPages %}
+        <li>
+            <a href="{{ paginate.href(true) }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% endif %}
+
+        {% for page in pages %}
+        <li class="{% if paginate.page == page.number %} active {% endif %}">
+            <a href="{{ page.url }}">{{ page.number }} </a>
+        </li>
+        {% endfor %}
+
+        {% if paginate.hasNextPages( pageCount ) %}
+        <li>
+            <a href="{{ paginate.href() }}">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+
 {% endblock %}
