@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
     let Products = sequelize.define('Products', {
         id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
         name: {type: DataTypes.STRING},
-        thumbnail : { type: DataTypes.STRING },
+        thumbnail: {type: DataTypes.STRING},
         price: {type: DataTypes.INTEGER},
         description: {type: DataTypes.TEXT}
     }, { // 옵션 설정
@@ -25,6 +25,11 @@ module.exports = function (sequelize, DataTypes) {
             onDelete: 'CASCADE'
         });
 
+        Products.belongsTo(models.User, {
+            as: 'Owner',
+            foreignKey: 'user_id',
+            targetKey: 'id'
+        });
     };
 
 
