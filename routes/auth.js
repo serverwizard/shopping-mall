@@ -51,6 +51,10 @@ passport.use(new FacebookStrategy({
             let user;
             if (!exist) {
                 // 존재하면 바로 세션에 등록
+                // TODO OAuth 2.0 을 이용할 때는,
+                //  주로 이런식으로 인증을 거치고 디비에 저장함
+                //  그래야만 나중에 회원 집계도 할수 있고, 그래야만 우리서비스에서 사용자 정보도 수정할 수 있음
+                //  User 테이블에 user_type을 컬럼을 둬서 email/facebook/ 이런식으로 구별함
                 user = await models.User.create({
                     username,
                     displayname: profile.displayName,
@@ -80,7 +84,7 @@ router.get('/facebook', passport.authenticate('facebook', {scope: 'email'}));
 router.get('/facebook/callback',
     passport.authenticate('facebook',
         {
-            successRedirect: '/auth/facebook/success',
+            successRedirect: '/',
             failureRedirect: '/auth/facebook/fail'
         }
     )
@@ -95,6 +99,5 @@ router.get('/facebook/success', (req, res) => {
 router.get('/facebook/fail', (req, res) => {
     res.send('facebook login fail');
 });
-
 
 module.exports = router;
