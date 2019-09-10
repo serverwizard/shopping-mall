@@ -34,7 +34,8 @@ const session = require('express-session');
 
 // redis
 const client = require('./config/redis');
-const RedisStore = require('connect-redis')(session);
+// const RedisStore = require('connect-redis')(session);
+
 
 // 세션 검사 미들웨어
 const sessionChecker = require('./middleware/session');
@@ -90,8 +91,11 @@ app.use(cookieParser());
 // static 폴더 위치 설정
 app.use('/uploads', express.static('uploads'));
 
+
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
 //session 관련 셋팅
-const sess = {
+const sessionMiddleWare = session({
     secret: 'fastcampus',
     resave: false,
     saveUninitialized: false,
@@ -101,13 +105,14 @@ const sess = {
         httpOnly: true,
         secure: false,
     },
-    store: new RedisStore({client}),
-};
+    // store: new RedisStore({client}),
+    store: new SequelizeStore({db: db.sequelize}),
+});
 
 //passport(인증) 적용
-app.use(session(sess)); // 대부분의 미들웨어들이 request의 변수를 추가하는 꼴로 동작 (request.session)
+app.use(sessionMiddleWare); // 대부분의 미들웨어들이 request의 변수를 추가하는 꼴로 동작 (request.session)
 app.use(passport.initialize()); // authenticate 추가
-app.use(passport.session(sess));
+app.use(passport.session());
 
 //플래시 메시지 관련
 app.use(flash());
@@ -125,7 +130,6 @@ app.use((req, res, next) => {
 // 세션 검사
 app.use(sessionChecker);
 
-
 app.use('/', home);
 app.use('/admin', admin);
 app.use('/contacts', contacts);
@@ -135,6 +139,19 @@ app.use('/auth/kakao', kakaoOAuth);
 app.use('/auth', auth);
 app.use('/chat', chat);
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log('Express listening on port', port);
 });
+
+const listen = require('socket.io');
+
+const io = listen(server);
+
+// socket io passport 접근하기 위한 미들웨어 적용
+// socket 에서 session 에 접근 가능하도록 설정
+io.use((socket, next) => {
+    sessionMiddleWare(socket.request, socket.request.res, next);
+});
+
+require('./helpers/socketConnection')(io);
+
