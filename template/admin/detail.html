@@ -17,7 +17,8 @@
         </p>
         {% endif %}
 
-        {{ product.description }}
+        <!-- 위지에디터는 입력된 내용을 태그까지 같이 저장함, 따라서 safe 안하면 태그까지 포함된 string 이 보임 -->
+        {{ product.description | safe }}
 
         <hr/>
 
