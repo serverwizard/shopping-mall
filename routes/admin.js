@@ -78,9 +78,7 @@ router.get('/products', paginate.middleware(3, 50), async (req, res) => {
         res.render('admin/products.html', {products, pages, pageCount});
 
     } catch (e) {
-
     }
-
 });
 
 router.get('/products/write', loginRequired, csrfProtection, (req, res) => {
@@ -182,6 +180,10 @@ router.get('/products/delete/:product_id/:memo_id', async (req, res) => {
     } catch (e) {
         console.log(e);
     }
+});
+
+router.post('/products/ajax_summernote', loginRequired, upload.single('thumbnail'), (req, res) => {
+    res.send('/uploads/' + req.file.filename);
 });
 
 module.exports = router;
