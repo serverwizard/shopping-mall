@@ -2,6 +2,11 @@ const {Router} = require('express');
 const router = Router();
 const ctrl = require('./products.ctrl');
 
+const csrfProtection = require('../../middleware/csrf');
+
+const loginRequired = require('../../middleware/loginRequired');
+const upload = require('../../middleware/multer');
+
 router.get('/detail/:id', ctrl.get_product_detail);
 router.post('/detail/:id', ctrl.post_product_detail);
 router.get('/edit/:id', loginRequired, csrfProtection, ctrl.get_edit);
