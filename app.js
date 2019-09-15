@@ -32,126 +32,135 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const session = require('express-session');
 
-// redis
-const client = require('./config/redis');
-// const RedisStore = require('connect-redis')(session);
-
-
-// 세션 검사 미들웨어
-const sessionChecker = require('./middleware/session');
-
 // db 관련
 const db = require('./models');
 
-// TODO 로컬에서 개발할 때는 데이터베이스와 자동으로 싱크 맞추고 있음 (운영에서는 별도로 어떻게 가져갈 것인지)
-db.sequelize.authenticate()
-    .then(() => {
-        console.log('Connection has been established successfully.');
+// redis
+// const client = require('./config/redis');
+// const RedisStore = require('connect-redis')(session);
 
-        // return db.sequelize.drop();
-        // TODO 서버가 뜰 때, DB 테이블 자동으로 생성해줌
-        return db.sequelize.sync();
-    })
-    .then(() => {
-        console.log('DB Sync complete.');
-    })
-    .catch(err => {
-        console.error('Unable to connect to the database:', err);
-    });
+class App {
 
-const home = require('./routes/home.js');
-const admin = require('./routes/admin');
-const contacts = require('./routes/contacts');
-const accounts = require('./routes/accounts');
-const auth = require('./routes/auth');
-const kakaoOAuth = require('./routes/auth-kakao');
-const githubAuth = require('./routes/auth-github');
-const chat = require('./routes/chat');
+    constructor() {
+        this.app = express();
 
-const app = express();
-const port = 3000;
+        // db 접속
+        this.dbConnection();
 
-/**
- * 템플릿 엔진 셋팅
- */
-nunjucks.configure('template', {
-    autoescape: true,
-    express: app
-});
+        // 뷰 템플릿 엔진 셋팅
+        this.setViewEngine();
 
-/**
- * 미들웨어 사용 부분
- */
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser());
+        // 세션 셋팅
+        this.setSession();
 
-// '/uploads': 웹 URL, express.static('uploads'): 폴더 위치
-// static 폴더 위치 설정
-app.use('/uploads', express.static('uploads'));
+        // 미들웨어 셋팅
+        this.setMiddleWare();
+
+        // 정적 디렉토리 추가
+        this.setStatic();
+
+        // 글로벌 변수 선언
+        this.setLocals();
+
+        // 라우팅
+        this.getRouting();
+    }
+
+    dbConnection() {
+        // TODO 로컬에서 개발할 때는 데이터베이스와 자동으로 싱크 맞추고 있음 (운영에서는 별도로 어떻게 가져갈 것인지)
+        db.sequelize.authenticate()
+            .then(() => {
+                console.log('Connection has been established successfully.');
+                // TODO 서버가 뜰 때, DB 테이블 자동으로 생성해줌
+                //  return db.sequelize.sync();
+                // return db.sequelize.drop();
+            })
+            .then(() => {
+                console.log('DB Sync complete.');
+                // 더미 데이터가 필요하면 아래 설정
+                //  require('./config/insertDummyData')();
+            })
+            .catch(err => {
+                console.error('Unable to connect to the database:', err);
+            });
+    }
 
 
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+    setMiddleWare() {
+        this.app.use(logger('dev'));
+        this.app.use(bodyParser.json());
+        this.app.use(bodyParser.urlencoded({extended: false}));
+        this.app.use(cookieParser());
 
-//session 관련 셋팅
-const sessionMiddleWare = session({
-    secret: 'fastcampus',
-    resave: false,
-    saveUninitialized: false,
-    name: 'sessionId',
-    cookie: {
-        maxAge: 2000 * 60 * 60, //지속시간 2시간
-        httpOnly: true,
-        secure: false,
-    },
-    // store: new RedisStore({client}),
-    store: new SequelizeStore({db: db.sequelize}),
-});
+        //passport(인증) 적용
+        app.use(passport.initialize()); // authenticate 추가
+        app.use(passport.session());
 
-//passport(인증) 적용
-app.use(sessionMiddleWare); // 대부분의 미들웨어들이 request의 변수를 추가하는 꼴로 동작 (request.session)
-app.use(passport.initialize()); // authenticate 추가
-app.use(passport.session());
+        //플래시 메시지 관련
+        this.app.use(flash());
+    }
 
-//플래시 메시지 관련
-app.use(flash());
+    setViewEngine() {
+        /**
+         * 템플릿 엔진 셋팅
+         */
+        nunjucks.configure('template', {
+            autoescape: true,
+            express: app
+        });
+    }
 
-// 로그인 여부를 전달함, 해당 미들웨어는 모든 router 위에 두어야 에러가 안난다
-// 이렇게하면 라우터마다 isLogin 변수를 안내려줘도 됨
-// 글로벌 변수를 선언하는 방법
-app.use((req, res, next) => {
-    app.locals.isLogin = req.isAuthenticated();
-    //app.locals.urlparameter = req.url; //현재 url 정보를 보내고 싶으면 이와같이 셋팅
-    //app.locals.userData = req.user; //사용 정보를 보내고 싶으면 이와같이 셋팅
-    next();
-});
 
-// 세션 검사
-app.use(sessionChecker);
+    setSession() {
+        const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-app.use('/', home);
-app.use('/admin', admin);
-app.use('/contacts', contacts);
-app.use('/accounts', accounts);
-app.use('/auth/github', githubAuth);
-app.use('/auth/kakao', kakaoOAuth);
-app.use('/auth', auth);
-app.use('/chat', chat);
+        //session 관련 셋팅
+        this.app.sessionMiddleWare = session({
+            secret: 'fastcampus',
+            resave: false,
+            saveUninitialized: true,
+            name: 'sessionId',
+            cookie: {
+                maxAge: 2000 * 60 * 60, //지속시간 2시간
+                httpOnly: true,
+                secure: false,
+            },
+            // store: new RedisStore({client}),
+            store: new SequelizeStore({
+                db: db.sequelize,
+            }),
+        });
 
-const server = app.listen(port, () => {
-    console.log('Express listening on port', port);
-});
+        // 대부분의 미들웨어들이 request의 변수를 추가하는 꼴로 동작 (request.session)
+        this.app.use(this.app.sessionMiddleWare);
+    }
 
-const listen = require('socket.io');
 
-const io = listen(server);
+    setStatic() {
+        // '/uploads': 웹 URL, express.static('uploads'): 폴더 위치
+        // static 폴더 위치 설정
+        this.app.use('/uploads', express.static('uploads'));
+    }
 
-// socket io passport 접근하기 위한 미들웨어 적용
-// socket 에서 session 에 접근 가능하도록 설정
-io.use((socket, next) => {
-    sessionMiddleWare(socket.request, socket.request.res, next);
-});
+    setLocals() {
+        this.app.use((req, _, next) => {
+            // 로그인 여부를 전달함, 해당 미들웨어는 모든 router 위에 두어야 에러가 안난다
+            // 이렇게하면 라우터마다 isLogin 변수를 안내려줘도 됨
+            // 글로벌 변수를 선언하는 방법
+            this.app.locals.isLogin = req.isAuthenticated();
+            this.app.locals.req_path = req.path;
 
-require('./helpers/socketConnection')(io);
+            //app.locals.urlparameter = req.url; //현재 url 정보를 보내고 싶으면 이와같이 셋팅
+            //app.locals.userData = req.user; //사용 정보를 보내고 싶으면 이와같이 셋팅
+
+            next();
+        });
+    }
+
+    getRouting() {
+        this.app.use(require('./controllers'));
+    }
+}
+
+module.exports = new App().app;
 
