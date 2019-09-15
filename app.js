@@ -93,8 +93,8 @@ class App {
         this.app.use(cookieParser());
 
         //passport(인증) 적용
-        app.use(passport.initialize()); // authenticate 추가
-        app.use(passport.session());
+        this.app.use(passport.initialize()); // authenticate 추가
+        this.app.use(passport.session());
 
         //플래시 메시지 관련
         this.app.use(flash());
@@ -106,7 +106,7 @@ class App {
          */
         nunjucks.configure('template', {
             autoescape: true,
-            express: app
+            express: this.app
         });
     }
 
@@ -163,4 +163,3 @@ class App {
 }
 
 module.exports = new App().app;
-
