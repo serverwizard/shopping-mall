@@ -1,15 +1,11 @@
-const express = require('express');
-const router = express.Router();
-
-// passport-kakao 모듈이 토큰을 가지고, 카카오에서 정보를 가져오는 중간 과정을 자동으로 해줌
+// passport-github 모듈이 토큰을 가지고, 깃허브에서 정보를 가져오는 중간 과정을 자동으로 해줌
 const passport = require('passport');
-const KakaoStrategy = require('passport-kakao').Strategy;
+const GitHubStrategy = require('passport-github').Strategy;
 
 const models = require('../models');
 
 const dotenv = require('dotenv');
 dotenv.config(); // LOAD CONFIG
-
 
 passport.serializeUser((user, done) => {
     done(null, user);
@@ -19,14 +15,14 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
-passport.use(new KakaoStrategy({
-        clientID: process.env.KAKAO_APPID,
-        clientSecret: process.env.KAKAO_SECRETCODE,
-        callbackURL: `${process.env.SITE_DOMAIN}/auth/kakao/oauth`,
+passport.use(new GitHubStrategy({
+        clientID: process.env.GITHUB_APPID,
+        clientSecret: process.env.GITHUB_SECRETCODE,
+        callbackURL: `${process.env.SITE_DOMAIN}/auth/github/callback`,
     },
     async (accessToken, refreshToken, profile, done) => {
 
-        const username = `kakao_${profile.id}`;
+        const username = `gh_${profile.id}`;
 
         // 존재하는지 체크
         const exist = await models.User.count({
@@ -42,7 +38,7 @@ passport.use(new KakaoStrategy({
             user = await models.User.create({
                 username,
                 displayname: profile.displayName,
-                password: "kakao"
+                password: "github"
             });
         } else {
             user = await models.User.findOne({
@@ -56,14 +52,4 @@ passport.use(new KakaoStrategy({
     }
 ));
 
-router.get('/', passport.authenticate('kakao', {
-    failureRedirect: '/accounts/login'
-}));
-
-router.get('/oauth', passport.authenticate('kakao', {
-        successRedirect: '/',
-        failureRedirect: '/accounts/login'
-    })
-);
-
-module.exports = router;
+module.exports = passport;
