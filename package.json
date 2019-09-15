@@ -4,7 +4,7 @@
   "description": "shopping mall",
   "main": "app.js",
   "scripts": {
-    "start": "npx nodemon -e js,html app.js",
+    "start": "npx nodemon -e js,html server.js",
     "dev": "npx nodemon app.js"
   },
   "author": "serverwizard",
