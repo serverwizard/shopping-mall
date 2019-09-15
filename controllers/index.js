@@ -6,5 +6,6 @@ router.use('/admin', require('./admin'));
 router.use('/accounts', require('./accounts'));
 router.use('/auth', require('./auth'));
 router.use('/chat', require('./chat'));
+router.use('/contacts', require('./contacts'));
 
 module.exports = router;
