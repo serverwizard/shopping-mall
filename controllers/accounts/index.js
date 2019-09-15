@@ -53,15 +53,15 @@ passport.use(new LocalStrategy({
     }
 ));
 
-router.get('/accounts/join', ctrl.get_join);
-router.post('/accounts/join', ctrl.post_join);
-router.get('/accounts/login', ctrl.get_login);
-router.post('/accounts/login',
+router.get('/join', ctrl.get_join);
+router.post('/join', ctrl.post_join);
+router.get('/login', ctrl.get_login);
+router.post('/login',
     passport.authenticate('local', {
     failureRedirect: '/accounts/login',
     failureFlash: true
 }), ctrl.post_login);
-router.get('/accounts/success', ctrl.get_success);
-router.get('/accounts/logout', ctrl.get_logout);
+router.get('/success', ctrl.get_success);
+router.get('/logout', ctrl.get_logout);
 
 module.exports = router;
