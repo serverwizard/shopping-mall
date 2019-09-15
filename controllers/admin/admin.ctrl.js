@@ -54,3 +54,27 @@ exports.get_products = async (req,res) => {
         console.log(e);
     }
 };
+
+exports.get_write = ( req , res ) => {
+    res.render( 'admin/form.html' , { csrfToken : req.csrfToken() });
+};
+
+exports.post_write = async (req,res) => {
+
+    try{
+        req.body.thumbnail = (req.file) ? req.file.filename : "";
+        // 유저를 가져온다음에 저장
+        const user = await models.User.findByPk(req.user.id);
+        await user.createProduct(req.body);
+
+        // 이런식으로 사용해도 되지만... 어떤게 더 의미가 있는지 고민해볼 것
+        // req.body.thumbnail = (req.file) ? req.file.filename : "";
+        // req.user_id = req.user.id;
+        // await models.Products.create(req.body);
+
+        res.redirect('/admin/products');
+
+    }catch(e){
+        console.log(e);
+    }
+};
