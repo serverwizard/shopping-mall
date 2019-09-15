@@ -148,6 +148,7 @@ class App {
             // 이렇게하면 라우터마다 isLogin 변수를 안내려줘도 됨
             // 글로벌 변수를 선언하는 방법
             this.app.locals.isLogin = req.isAuthenticated();
+            // 현재 URL을 템플릿쪽 변수로 쏴준다
             this.app.locals.req_path = req.path;
 
             //app.locals.urlparameter = req.url; //현재 url 정보를 보내고 싶으면 이와같이 셋팅

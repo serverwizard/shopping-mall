@@ -43,26 +43,15 @@
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
                         <ul class="nav navbar-nav">
-                            <li class="active">
-                                <a href="/">홈</a>
-                            </li>
-                            <li>
-                                <a href="/admin/products">ADMIN</a>
-                            </li>
-                            <li>
-                                <a href="/chat">채팅</a>
-                            </li>
+                            {% from "macro/link.html" import link %}
+                            {{ link( '/' , "홈" , req_path ) }}
+                            {{ link( '/admin/products' , "ADMIN" , req_path ) }}
+                            {{ link( '/chat' , "채팅" , req_path ) }}
                             {% if isLogin %}
-                            <li>
-                                <a href="/accounts/logout" onclick="return confirm('로그아웃 하시겠습니까?')">LOGOUT</a>
-                            </li>
+                            <li><a href="/accounts/logout" onclick="return confirm('로그아웃 하시겠습니까?')">LOGOUT</a></li>
                             {% else %}
-                            <li>
-                                <a href="/accounts/join">회원가입</a>
-                            </li>
-                            <li>
-                                <a href="/accounts/login">LOGIN</a>
-                            </li>
+                            {{ link( '/accounts/join' , "회원가입" , req_path ) }}
+                            {{ link( '/accounts/login' , "LOGIN" , req_path ) }}
                             {% endif %}
                         </ul>
                     </div>
