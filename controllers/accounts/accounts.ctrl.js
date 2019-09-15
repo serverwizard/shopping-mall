@@ -1,3 +1,5 @@
+const models = require('../../models');
+
 exports.get_join = (req, res) => {
     res.render('accounts/join.html', {joinError: req.flash('joinError')});
 };
