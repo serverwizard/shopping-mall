@@ -140,6 +140,7 @@ class App {
         // '/uploads': 웹 URL, express.static('uploads'): 폴더 위치
         // static 폴더 위치 설정
         this.app.use('/uploads', express.static('uploads'));
+        this.app.use('/static', express.static('static'));
     }
 
     setLocals() {
