@@ -2,6 +2,9 @@
 href : 링크
 text : 링크에 보여질 텍스트
 current_url : 현재 url
+
+썸네일 크기 조정해주는거를 매크로로 만들면 좋음
+해당 파일만 수정하면, 이걸 사용하는 쪽에서 일괄적으로 다 적용되도록
 #}
 {% macro link(  href , text , current_url ) %}
 <li {% if href== current_url %} class="active" {% endif %}>
