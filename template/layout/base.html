@@ -29,6 +29,7 @@
         <link rel="stylesheet" type="text/css" href="/uploads/bootstrap-social.css">
     </head>
     <body>
+        {% from "macro/link.html" import link %}
         <div class="container" style="padding-top: 10px;">
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
@@ -45,12 +46,17 @@
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
                         <ul class="nav navbar-nav">
-                            {% from "macro/link.html" import link %}
+                            <!-- if 문을 반복해서 active 를 구현할 수도 있지만, 여러번 반복되니까 매크로로 구현함
+                                {% if req_path == '/' %} class="active" {% endif %}
+                                -->
                             {{ link( '/' , "홈" , req_path ) }}
                             {{ link( '/admin/products' , "ADMIN" , req_path ) }}
                             {{ link( '/chat' , "채팅" , req_path ) }}
+                            {{ link( '/cart' , "장바구니" , req_path ) }}
                             {% if isLogin %}
-                            <li><a href="/accounts/logout" onclick="return confirm('로그아웃 하시겠습니까?')">LOGOUT</a></li>
+                            <li>
+                                <a href="/accounts/logout" onclick="return confirm('로그아웃 하시겠습니까?')">LOGOUT</a>
+                            </li>
                             {% else %}
                             {{ link( '/accounts/join' , "회원가입" , req_path ) }}
                             {{ link( '/accounts/login' , "LOGIN" , req_path ) }}
