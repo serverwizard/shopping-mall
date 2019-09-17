@@ -15,7 +15,8 @@ const sequelize = new Sequelize(process.env.DATABASE,
             max: 5,
             min: 0,
             idle: 10000
-        }
+        },
+        // logging: false
     });
 
 // 모듈로 사용하기 위해 db 객체를 선언
