@@ -19,6 +19,9 @@
  * css, js인 정적 파일을 S3에 저장하는 이유: 서버 부하 줄여줌 (요청 최소화)
  */
 
+/**
+ * 해당 파일에는 express 설정부분만 가짐
+ */
 const express = require('express');
 const nunjucks = require('nunjucks');
 const logger = require('morgan');
