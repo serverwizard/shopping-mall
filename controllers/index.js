@@ -8,5 +8,7 @@ router.use('/auth', require('./auth'));
 router.use('/chat', require('./chat'));
 router.use('/contacts', require('./contacts'));
 router.use('/products',  require('./products'));
+router.use('/cart',  require('./cart'));
+router.use('/checkout',  require('./checkout'));
 
 module.exports = router;
