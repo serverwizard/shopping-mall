@@ -18,36 +18,35 @@
         </p>
         {% endif %}
 
-        {{ product.description }}
+        {{ product.description | safe }}
 
         <hr/>
 
-        <div>
-            <div class="printNum">갯수 :</div>
-            <div class="CountBox">
-                <a href="#" type="minus">-</a>
-                <p id="amountHtml">1</p>
-                <a href="#" type="plus">+</a>
+        <form action="" id="cartForm" method="post">
+            <!--가격 -->
+            <input type="hidden" name="price" value="{{ product.price }}">
+            <!--갯수 -->
+            <input type="hidden" name="number" value="1">
+            <!--선택한 갯수 * 가격 = 구매가격 -->
+            <input type="hidden" name="amount" value="{{ product.price }}">
+
+            <div>
+                <div class="printNum">갯수 :</div>
+                <div class="CountBox">
+                    <a href="#" type="minus">-</a>
+                    <p id="amountHtml">1</p>
+                    <a href="#" type="plus">+</a>
+                </div>
+                <div class="priceWrap">
+                    금액 : <span id="priceHtml">{{ product.price }}</span>
+                </div>
+                <div style="clear:both"></div>
             </div>
-            <div class="priceWrap">
-                금액 : <span id="priceHtml">{{ product.price }}</span>
-            </div>
-            <div style="clear:both"></div>
-        </div>
+            <a href="/" class="btn btn-default">목록으로</a>
+            <button class="btn btn-primary">장바구니 담기</button>
+        </form>
     </div>
 </div>
-
-<form action="" id="cartForm" method="post">
-    <!--가격 -->
-    <input type="hidden" name="price" value="{{ product.price }}">
-    <!--갯수 -->
-    <input type="hidden" name="number" value="1">
-    <!--선택한 갯수 * 가격 = 구매가격 -->
-    <input type="hidden" name="amount" value="{{ product.price }}">
-
-    <a href="/" class="btn btn-default">목록으로</a>
-    <button class="btn btn-primary">장바구니 담기</button>
-</form>
 
 <style>
     .printNum {
@@ -90,13 +89,13 @@
         $('.CountBox a').click(function (event) {
             event.preventDefault();
             //타입을 받아온다
-            var type = $(this).attr('type');
+            let type = $(this).attr('type');
 
             //현재 장바구니에 담을 갯수를 저장
-            var cartNum = $('input[name=number]').val();
+            let cartNum = $('input[name=number]').val();
 
             //현재 제품의 가격표
-            var price = $('input[name=price]').val();
+            let price = $('input[name=price]').val();
             if (type === 'minus') { //+,- 냐에 따라 나눈다
                 cartNum -= ((cartNum == 1) ? 0 : 1); //1이하로는 못내려가게 한다
             } else if (type === 'plus') {
@@ -112,16 +111,20 @@
         $('#cartForm').submit(function () {
             if (confirm('장바구니에 담겠습니까?')) {
                 //장바구니에 담길 ID,사진,이름을 받는다
-                var productId = "{{ product.id }}";
-                var thumbnail = "{{ product.thumbnail }}";
-                var name = "{{ product.name }}";
+                /**
+                 * 사실 서버에서 넘어온 데이터를 스크립트에서 바로 사용하는건 좋은게 아님
+                 * hidden 에다가 값을 셋팅하고 스크립트에서 가져오는 식으로 사용하는게 정석
+                 */
+                let productId = "{{ product.id }}";
+                let thumbnail = "{{ product.thumbnail }}";
+                let name = "{{ product.name }}";
 
                 //갯수와 총량을 담는다.
-                var number = $('input[name=number]').val();
-                var amount = $('input[name=amount]').val();
+                let number = $('input[name=number]').val();
+                let amount = $('input[name=amount]').val();
 
-                var cartList = {};
-                var totalAmount = 0;
+                let cartList = {};
+                let totalAmount = 0;
                 if (getCookie('cartList')) {
                     //쿠키에서 검색후 있으면 json 파싱함
                     cartList = JSON.parse(getCookie('cartList'));
