@@ -28,6 +28,11 @@
         <link rel="stylesheet" type="text/css" href="/uploads/bootstrap-social.less">
         <link rel="stylesheet" type="text/css" href="/uploads/bootstrap-social.css">
     </head>
+    {% if isLogin %}
+    <script>window.isLogin = true;</script>
+    {% else %}
+    <script>window.isLogin = false;</script>
+    {% endif %}
     <body>
         {% from "macro/link.html" import link %}
         <div class="container" style="padding-top: 10px;">
@@ -50,7 +55,9 @@
                                 {% if req_path == '/' %} class="active" {% endif %}
                                 -->
                             {{ link( '/' , "홈" , req_path ) }}
+                            {% if req_user.username == 'admin' %}
                             {{ link( '/admin/products' , "ADMIN" , req_path ) }}
+                            {% endif %}
                             {{ link( '/chat' , "채팅" , req_path ) }}
                             {{ link( '/cart' , "장바구니" , req_path ) }}
                             {% if isLogin %}
