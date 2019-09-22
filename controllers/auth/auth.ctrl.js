@@ -7,3 +7,7 @@ exports.redirect_facebook_success = (req, res) => {
 exports.redirect_facebook_fail = (req, res) => {
     res.send('facebook login fail');
 };
+
+exports.redirect_success = (req, res) => {
+    res.redirect('/')
+};
