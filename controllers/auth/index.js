@@ -10,17 +10,16 @@ const kakaoPassport = require('../../config/kakaoStrategy');
 const dotenv = require('dotenv');
 dotenv.config(); // LOAD CONFIG
 
+const userCart = require('../../middleware/userCart');
+
 <!-- facebook -->
 // http://localhost:3000/auth/facebook 접근시 facebook으로 넘길 url 작성해줌
 router.get('/facebook', facebookPassport.authenticate('facebook', {scope: 'email'}));
 //인증후 페이스북에서 이 주소로 리턴해줌. 상단에 적은 callbackURL과 일치
 router.get('/facebook/callback',
-    facebookPassport.authenticate('facebook',
-        {
-            successRedirect: '/',
+    facebookPassport.authenticate('facebook', {
             failureRedirect: '/auth/facebook/fail'
-        }
-    )
+        }), userCart, ctrl.redirect_success
 );
 router.get('/facebook/success', ctrl.redirect_facebook_success);
 router.get('/facebook/fail', ctrl.redirect_facebook_fail);
@@ -30,19 +29,18 @@ router.get('/github', githubPassport.authenticate('github'));
 
 router.get('/github/callback',
     githubPassport.authenticate('github', {
-        successRedirect: '/',
         failureRedirect: '/accounts/login'
-    })
+    }), userCart, ctrl.redirect_success
 );
 
 <!-- kakao -->
 router.get('/kakao', kakaoPassport.authenticate('kakao', {
     failureRedirect: '/accounts/login'
 }));
+
 router.get('/kakao/oauth', kakaoPassport.authenticate('kakao', {
-        successRedirect: '/',
         failureRedirect: '/accounts/login'
-    })
+    }), userCart, ctrl.redirect_success
 );
 
 module.exports = router;
