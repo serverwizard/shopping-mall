@@ -2,53 +2,57 @@
 {% extends "layout/base.html" %}
 
 {% block content -%}
-<table class="table table-bordered table-hover">
-    <tr>
-        <th>제목</th>
-        <th>작성일</th>
-        <th>삭제</th>
-    </tr>
-    {% for product in products %}
-    <tr>
-        <td><a href="/admin/products/detail/{{  product.id }}">{{ product.name }}</a></td>
-        <td>
-            {{product.dateFormat(product.createdAt)}}
-        </td>
-        <td>
-            <a href="/admin/products/delete/{{ product.id }}"
-               class="btn btn-danger"
-               onclick="return confirm('삭제하시겠습니까?')">삭제</a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
 
-<a href="/admin/products/write" class="btn btn-default">작성하기</a>
+{% include "layout/sidebar.html" %}
 
-<nav>
-    <ul class="pagination">
-        {% if paginate.hasPreviousPages %}
-        <li>
-            <a href="{{ paginate.href(true) }}" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        {% endif %}
-
-        {% for page in pages %}
-        <li class="{% if paginate.page == page.number %} active {% endif %}">
-            <a href="{{ page.url }}">{{ page.number }} </a>
-        </li>
+<div class="col-sm-10">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>제목</th>
+            <th>작성일</th>
+            <th>삭제</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td><a href="/admin/products/detail/{{  product.id }}">{{ product.name }}</a></td>
+            <td>
+                {{product.dateFormat(product.createdAt)}}
+            </td>
+            <td>
+                <a href="/admin/products/delete/{{ product.id }}"
+                   class="btn btn-danger"
+                   onclick="return confirm('삭제하시겠습니까?')">삭제</a>
+            </td>
+        </tr>
         {% endfor %}
+    </table>
 
-        {% if paginate.hasNextPages( pageCount ) %}
-        <li>
-            <a href="{{ paginate.href() }}">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-        {% endif %}
-    </ul>
-</nav>
+    <a href="/admin/products/write" class="btn btn-default">작성하기</a>
 
+    <nav>
+        <ul class="pagination">
+            {% if paginate.hasPreviousPages %}
+            <li>
+                <a href="{{ paginate.href(true) }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% endif %}
+
+            {% for page in pages %}
+            <li class="{% if paginate.page == page.number %} active {% endif %}">
+                <a href="{{ page.url }}">{{ page.number }} </a>
+            </li>
+            {% endfor %}
+
+            {% if paginate.hasNextPages( pageCount ) %}
+            <li>
+                <a href="{{ paginate.href() }}">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
 {% endblock %}
