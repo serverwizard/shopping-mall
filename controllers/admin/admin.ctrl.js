@@ -5,18 +5,18 @@ const paginate = require('express-paginate');
 /**
  * offset : 시작지점
  */
-exports.get_products = async (req,res) => {
+exports.get_products = async (req, res) => {
 
-    try{
+    try {
 
-        const [ products, totalCount ] = await Promise.all([
+        const [products, totalCount] = await Promise.all([
 
             models.Products.findAll({
-                include : [
+                include: [
                     {
-                        model : models.User ,
-                        as : 'Owner',
-                        attributes : [ 'username' , 'displayname' ]
+                        model: models.User,
+                        as: 'Owner',
+                        attributes: ['username', 'displayname']
                     },
                 ],
                 limit: req.query.limit,
@@ -51,7 +51,7 @@ exports.get_products = async (req,res) => {
 
         res.render('admin/products.html', {products, pages, pageCount});
 
-    }catch(e){
+    } catch (e) {
         console.log(e);
     }
 };
@@ -134,13 +134,13 @@ exports.post_summernote = (req, res) => {
     res.send('/uploads/' + req.file.filename);
 };
 
-exports.get_write = ( req , res ) => {
-    res.render( 'admin/form.html' , { csrfToken : req.csrfToken() });
+exports.get_write = (req, res) => {
+    res.render('admin/form.html', {csrfToken: req.csrfToken()});
 };
 
-exports.post_write = async (req,res) => {
+exports.post_write = async (req, res) => {
 
-    try{
+    try {
         req.body.thumbnail = (req.file) ? req.file.filename : "";
         // 유저를 가져온다음에 저장
         const user = await models.User.findByPk(req.user.id);
@@ -153,7 +153,29 @@ exports.post_write = async (req,res) => {
 
         res.redirect('/admin/products');
 
-    }catch(e){
+    } catch (e) {
         console.log(e);
+    }
+};
+
+exports.get_order = async (req, res) => {
+    try {
+
+        const checkouts = await models.Checkout.findAll();
+        res.render('admin/order.html', {checkouts});
+
+    } catch (e) {
+
+    }
+};
+
+exports.get_order_edit = async (req, res) => {
+    try {
+
+        const checkout = await models.Checkout.findByPk(req.params.id);
+        res.render('admin/order_edit.html', {checkout});
+
+    } catch (e) {
+
     }
 };
