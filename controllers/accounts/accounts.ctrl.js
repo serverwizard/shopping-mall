@@ -33,7 +33,32 @@ exports.get_success = (req, res) => {
     res.send(req.user);
 };
 
-exports.get_logout = (req, res) => {
+exports.get_logout = async (req, res) => {
+    let cartList = {}; // 장바구니 리스트
+    // 회원이고, 쿠키에 장바구니가 있는 경우
+    if (typeof req.cookies.cartList !== "undefined") {
+        // 장바구니데이터
+        cartList = JSON.parse(unescape(req.cookies.cartList));
+
+        await models.Cart.destroy({
+            where: {
+                user_id: req.user.id
+            }
+        });
+
+        const user = await models.User.findByPk(req.user.id);
+        for (const key in cartList) {
+            await user.createCart({
+                product_id: key,
+                number: cartList[key].number,
+                amount: cartList[key].amount,
+                thumbnail: cartList[key].thumbnail,
+                name: cartList[key].name
+            });
+        }
+    }
+    res.clearCookie("cartList");
+    // Terminate an existing login session.
     req.logout();
-    res.redirect('/accounts/login');
+    res.redirect("/accounts/login");
 };
