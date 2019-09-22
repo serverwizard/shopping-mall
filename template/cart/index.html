@@ -16,7 +16,7 @@
         <td>
             <img src="/uploads/{{ cart.thumbnail }}" alt="" width="50" height="50"/>
         </td>
-        <td>{{ cart.name }}</td>
+        <td>{{ cart.name | safe }}</td>
         <td>{{ cart.number }}</td>
         <td>{{ cart.amount }} 원</td>
         <td>
