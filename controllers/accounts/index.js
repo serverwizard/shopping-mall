@@ -8,6 +8,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const passwordHash = require('../../helpers/passwordHash');
 
+const userCart = require('../../middleware/userCart');
+
 // Registers a function used to serialize user objects into the session. (로그인 할 때, 딱 한번만)
 passport.serializeUser((user, done) => { // callback 함수가 실행됨, Strategy 성공 시 호출됨
     console.log('serializeUser');
@@ -58,9 +60,9 @@ router.post('/join', ctrl.post_join);
 router.get('/login', ctrl.get_login);
 router.post('/login',
     passport.authenticate('local', {
-    failureRedirect: '/accounts/login',
-    failureFlash: true
-}), ctrl.post_login);
+        failureRedirect: '/accounts/login',
+        failureFlash: true
+    }), userCart, ctrl.post_login);
 router.get('/success', ctrl.get_success);
 router.get('/logout', ctrl.get_logout);
 
