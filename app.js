@@ -146,6 +146,7 @@ class App {
         this.app.use('/static', express.static('static'));
     }
 
+    // 뷰로 쏴줄 데이터 셋팅
     setLocals() {
         this.app.use((req, _, next) => {
             // 로그인 여부를 전달함, 해당 미들웨어는 모든 router 위에 두어야 에러가 안난다
@@ -157,6 +158,8 @@ class App {
 
             //app.locals.urlparameter = req.url; //현재 url 정보를 보내고 싶으면 이와같이 셋팅
             //app.locals.userData = req.user; //사용 정보를 보내고 싶으면 이와같이 셋팅
+
+            this.app.locals.req_user = req.user;
 
             next();
         });
