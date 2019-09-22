@@ -34,11 +34,19 @@ module.exports = (sequelize, DataTypes) => {
             {
                 as: 'Product',
                 foreignKey: 'user_id',
-                sourceKey: 'id' ,
+                sourceKey: 'id',
                 onDelete: 'CASCADE'
             }
         );
 
+        // 사용자와 장바구니와의 관계 설정
+        User.hasMany(models.Cart,
+            {
+                as: 'Cart',
+                foreignKey: 'user_id',
+                sourceKey: 'id',
+                onDelete: 'CASCADE'
+            });
     };
 
     // sequelize hook 사용, accounts 라우터에서 req.body.password로 직접 핸들링해도 됨
