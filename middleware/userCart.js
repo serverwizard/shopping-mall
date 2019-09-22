@@ -33,7 +33,7 @@ module.exports = async (req, res, next) => {
                 maxAge: 3600 * 1000 * 3
             });
 
-            await models.Carts.destroy({
+            await models.Cart.destroy({
                 where: {
                     user_id: req.user.id
                 }
