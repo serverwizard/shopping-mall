@@ -63,3 +63,20 @@ exports.post_complete = async (req, res) => {
 exports.get_success = (req, res) => {
     res.render('checkout/success.html');
 };
+
+exports.get_nomember = (_, res) => {
+    res.render('checkout/nomember.html');
+};
+
+exports.get_nomember_search = async (req, res) => {
+    try {
+        const checkouts = await models.Checkout.findAll({
+            where: {
+                buyer_email: req.query.buyer_email
+            }
+        });
+        res.render('checkout/search.html', {checkouts});
+    } catch (e) {
+        console.log(e)
+    }
+}
