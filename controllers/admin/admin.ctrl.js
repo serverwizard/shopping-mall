@@ -179,3 +179,7 @@ exports.get_order_edit = async (req, res) => {
 
     }
 };
+
+exports.statistics = (_,res) => {
+    res.render('admin/statistics.html');
+};
