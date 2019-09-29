@@ -30,8 +30,19 @@ module.exports = function (sequelize, DataTypes) {
             foreignKey: 'user_id',
             targetKey: 'id'
         });
-    };
 
+        // 좋아요 구현
+        Products.belongsToMany(models.User, {
+            through: {
+                model: 'LikesProducts',
+                unique: false
+            },
+            as: 'LikeUser',
+            foreignKey: 'product_id',
+            sourceKey: 'id',
+            constraints: false
+        });
+    };
 
     Products.prototype.dateFormat = (date) => (
         moment(date).format('YYYY-MM-DD')
