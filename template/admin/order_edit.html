@@ -54,7 +54,7 @@
             <tr>
                 <th>송장번호</th>
                 <td>
-                    <input type="text" name="song_jang" class="form-control"/>
+                    <input type="text" name="song_jang" class="form-control" value="{{ checkout.song_jang }}"/>
                 </td>
             </tr>
             </tbody>
@@ -63,6 +63,5 @@
         <button class="btn btn-primary">상태변경</button>
     </form>
 </div>
-
 
 {% endblock %}
