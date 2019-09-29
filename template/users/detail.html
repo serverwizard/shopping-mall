@@ -1,0 +1,41 @@
+{% set title = "사용자 : 상세페이지" %}
+{% extends "layout/base.html" %}
+
+{% block content -%}
+
+{% include "layout/sidebar.html" %}
+
+<div class="col-sm-10">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            회원
+        </div>
+        <div class="panel-body">
+            <div style="padding-bottom: 10px">
+                username : {{user.username}}
+            </div>
+
+            <hr/>
+
+            <div style="padding-bottom: 10px">
+                displayname : {{user.displayname}}
+            </div>
+
+            <hr/>
+
+            <div style="padding-bottom: 10px">
+                생성일 : {{ user.dateFormat(user.createdAt)}}
+            </div>
+
+            <div style="padding-bottom: 10px">
+                수정일 : {{ user.dateFormat(user.updatedAt)}}
+            </div>
+
+            <hr/>
+        </div>
+    </div>
+
+    <a href="/users" class="btn btn-default">목록으로</a>
+</div>
+
+{% endblock %}
