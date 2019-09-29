@@ -72,6 +72,14 @@
                 <span style="margin-top:10px" class="btn btn-primary" onclick="setDaumPostcode()">우편번호 찾기</span>
             </td>
         </tr>
+        <tr>
+            <th>결제수단</th>
+            <td>
+                <input type="radio" name="pay_method" value="card" checked>신용카드
+                <input type="radio" name="pay_method" value="trans">실시간 계좌이체
+                <input type="radio" name="pay_method" value="phone">휴대폰 결제
+            </td>
+        </tr>
         </tbody>
     </table>
     <div class="text-center" style="margin : 30px 0 100px 0">
@@ -86,12 +94,8 @@
 <script>
     $(document).ready(function () {
         $('#orderForm').submit(function () {
-            let amount = {
-            {
-                totalAmount
-            }
-        }
-            ;
+            let amount = {{totalAmount}};
+            let pay_method = $('input:radio[name=pay_method]:checked').val();
             let buyer_email = $('input[name=buyer_email]').val();
             let buyer_name = $('input[name=buyer_name]').val();
             let buyer_tel = $('input[name=buyer_tel]').val();
@@ -104,9 +108,12 @@
             //아임호트 사이트에서 받아온다( http://www.iamport.kr/ )
             IMP.init('imp79747053'); // 가맹점식별코드삽입, 이 값은 외부에 노출되면 될 수록 좋다. 그럼 내쪽으로 돈이 들어옴
 
+            /**
+             * TODO inicis PG사 말고 다른 PG사로 해보기
+             */
             IMP.request_pay({
                 pg: 'inicis',
-                pay_method: 'card',
+                pay_method: pay_method,
                 merchant_uid: 'merchant_' + new Date().getTime(),
                 name: '수업:결제테스트',
                 amount: amount,
@@ -115,7 +122,7 @@
                 buyer_tel: buyer_tel,
                 buyer_addr: buyer_addr,
                 buyer_postcode: buyer_postcode,
-                m_redirect_url: 'http://04de94b6.ngrok.io/checkout/complete' // 리다이렉트 url 뒤에 파라미터를 붙여 요청하면, 리다이렉트될 때 그대로 넘어온다.
+                m_redirect_url: 'http://e03a8fe0.ngrok.io/checkout/complete' // 리다이렉트 url 뒤에 파라미터를 붙여 요청하면, 리다이렉트될 때 그대로 넘어온다. (?uuid=xxxx)
             }, function (rsp) {
                 if (rsp.success) {
                     document.location.href = "/checkout/complete?imp_uid=" + rsp.imp_uid;
