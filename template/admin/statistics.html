@@ -13,12 +13,12 @@
     </div>
 
 </div>
-
+<!-- 구글차트 모듈 선언-->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script>
     //차트 로딩 시작
-    google.charts.load("current", {packages: ["corechart"]});
+    google.charts.load("current", {packages:["corechart"]});
     //막대기 차트를 그린다. 인자로 함수를 지정
     google.charts.setOnLoadCallback(drawbar);
 
@@ -26,12 +26,12 @@
         var data = google.visualization.arrayToDataTable([
 
             //첫줄은 [ x축, y축, 상단에 나올숫자 의미 ]
-            ['날짜', '결제자수', {role: 'annotation'}],
+            ['날짜', '결제자수', { role: 'annotation' } ],
 
             //그다음부터 데이터
-            ["08-10", 10, "(10)"],
-            ["08-11", 20, "(20)"],
-
+            {% for data in barData %}
+             ["{{ data.dataValues.date }}", {{ data.dataValues.cnt }} , "{{ data.dataValues.cnt }}"],
+            {% endfor %}
         ]);
 
         //차트 상단에 나올 제목, 차트 전체에 세로 길이등을 지정
@@ -49,22 +49,24 @@
 
     // 파이 차트(원형 도넛)를 그린다.
     google.charts.setOnLoadCallback(drawpie);
-
     function drawpie() {
         var data = google.visualization.arrayToDataTable([
             ['상태', '갯수'],
-            ['결재자', 50],
-            ['미결재자', 10]
-        ]);
+
+            //그다음부터 데이터
+            {% for data in pieData %}
+                ["{{ data.dataValues.status }}", {{ data.dataValues.cnt }} ],
+             {% endfor %}
+         ]);
 
         var options = {
-            title: '상품 상태',
+            title: '상품상태',
+            height: 400,
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('pieChart'));
         chart.draw(data, options);
     }
 </script>
-
 
 {% endblock %}
