@@ -1,0 +1,22 @@
+{#
+    isLogin : 로그인 상태
+    product_id : 제품 ID
+    userLikes : 유저가 좋아요 한 리스트 배열
+#}
+{% macro like( isLogin , product_id , userLikes ) %}
+    {% if isLogin %}
+        {% if( product_id in userLikes )%}
+        <a product_id="{{ product_id }}" class="pull-right remove_like" href="#">
+            <img src="/static/img/likeon.png" width="20" alt="">
+        </a>
+        {% else %}
+        <a product_id="{{ product_id }}" class="pull-right add_like" href="#">
+            <img src="/static/img/likeoff.png" width="20" alt="">
+        </a>
+        {% endif %}
+    {% else %}
+        <a class="pull-right" href="/accounts/login">
+            <img src="/static/img/likeoff.png" width="20" alt="">
+        </a>
+    {% endif %}
+{% endmacro %}
