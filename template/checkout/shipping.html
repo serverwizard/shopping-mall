@@ -1,0 +1,27 @@
+{% set title = "쇼핑몰 : 배송조회" %}
+{% extends "layout/base.html" %}
+
+{% block content -%}
+
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>단계</th>
+        <th>처리</th>
+        <th>상품상태</th>
+        <th>위치</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for track in result %}
+    <tr>
+        <td>{{ track.step }}</td>
+        <td>{{ track.date }}</td>
+        <td>{{ track.status }}</td>
+        <td>{{ track.location }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
