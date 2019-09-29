@@ -180,6 +180,45 @@ exports.get_order_edit = async (req, res) => {
     }
 };
 
-exports.statistics = (_,res) => {
-    res.render('admin/statistics.html');
+exports.post_order_edit = async (req, res) => {
+    try {
+
+        await models.Checkout.update(
+            req.body,
+            {
+                where: {id: req.params.id}
+            }
+        );
+
+        res.redirect('/admin/order');
+
+    } catch (e) {
+
+    }
+};
+
+exports.statistics = async (_, res) => {
+    try {
+        const barData = await models.Checkout.findAll({
+            attributes: [
+                // 시퀄라이즈에서 제공하는 메소드만으로는 쿼리가 부족한 경우가 있음. literal() 은 쿼리 문자열을 추가해 주는 기능
+                [models.sequelize.literal('date_format( createdAt, "%Y-%m-%d")'), 'date'],
+                [models.sequelize.fn('count', models.sequelize.col('id')), 'cnt']
+            ],
+            group: ['date']
+        });
+
+        const pieData = await models.Checkout.findAll({
+            attributes: [
+                'status',
+                [models.sequelize.fn('count', models.sequelize.col('id')), 'cnt']
+            ],
+            group: ['status']
+        });
+
+        res.render('admin/statistics.html', {barData, pieData});
+
+    } catch (e) {
+        console.log(e)
+    }
 };

@@ -26,6 +26,7 @@ router.post('/products/ajax_summernote', upload.single('thumbnail'), ctrl.post_s
 
 router.get('/order', ctrl.get_order);
 router.get('/order/edit/:id', ctrl.get_order_edit);
+router.post('/order/edit/:id', ctrl.post_order_edit);
 
 router.get('/statistics', ctrl.statistics);
 
