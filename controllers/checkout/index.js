@@ -10,4 +10,7 @@ router.get('/success', ctrl.get_success);
 router.get('/nomember', ctrl.get_nomember);
 router.get('/nomember/search', ctrl.get_nomember_search);
 
+// 송장번호
+router.get('/shipping/:invc_no', ctrl.get_shipping);
+
 module.exports = router;
