@@ -1,3 +1,4 @@
+const moment = require('moment');
 const passwordHash = require('../helpers/passwordHash');
 
 module.exports = (sequelize, DataTypes) => {
@@ -47,12 +48,28 @@ module.exports = (sequelize, DataTypes) => {
                 sourceKey: 'id',
                 onDelete: 'CASCADE'
             });
+
+        // 좋아요 구현
+        User.belongsToMany(models.Products, {
+            through: {
+                model: 'LikesProducts',
+                unique: false
+            },
+            as: 'Likes',
+            foreignKey: 'user_id',
+            sourceKey: 'id',
+            constraints: false
+        });
     };
 
     // sequelize hook 사용, accounts 라우터에서 req.body.password로 직접 핸들링해도 됨
     User.beforeCreate((user, _) => {
         user.password = passwordHash(user.password);
     });
+
+    User.prototype.dateFormat = (date) => (
+        moment(date).format('YYYY-MM-DD')
+    );
 
     return User;
 };
