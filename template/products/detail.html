@@ -1,11 +1,18 @@
 {% set title = "쇼핑몰 : 제품페이지" %}
 {% extends "layout/base.html" %}
 
+{# 좋아요 불러오기 #}
+{% from "macro/like.html" import like %}
+
 {% block content -%}
 
 <div class="panel panel-default">
     <div class="panel-heading">
         {{ product.name }}
+
+        <span id="like_area_{{ product.id }}">
+            {{ like( isLogin , product.id , userLikes ) }}
+        </span>
     </div>
     <div class="panel-body">
         <div style="padding-bottom: 10px">
