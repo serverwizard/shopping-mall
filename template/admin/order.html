@@ -20,7 +20,12 @@
                     {{ checkout.buyer_name }} ( {{ checkout.buyer_email }} )
                 </a>
             </td>
-            <td>{{ checkout.status }}</td>
+            <td>
+                {{ checkout.status }}
+                {% if checkout.status==='배송중' %}
+                <a href="/checkout/shipping/{{ checkout.song_jang }}">( 위치추적 )</a>
+                {% endif %}
+            </td>
             <td>{{ checkout.numberFormat }} 원</td>
             <td>{{ checkout.buyer_addr }}</td>
             <td>
