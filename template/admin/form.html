@@ -134,7 +134,7 @@
                         product_id: $product_id
                     }
                 }).done(function (result) {
-
+                    // 이미 등록되어 있으면 length = 0
                     if (result.status.length) {
                         var tag = result.tag;
                         $('#tag_area').append('<div class="icon_tag">' + tag.name +
@@ -155,6 +155,8 @@
                 });
             });
 
+            // Ajax로 동적으로 추가된 엘리먼트를 삭제하고 싶을 때, 동적으로 이벤트를 걸어줘야함
+            // 동적으로 생성된 엘리먼트에 동적으로 이벤트를 걸고 싶을 때 아래처럼 사용
             $(document).on('click', '.delete_tag', function (e) {
                 e.preventDefault();
                 if (!confirm('삭제하시겠습니까?')) {
