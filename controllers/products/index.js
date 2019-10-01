@@ -25,11 +25,14 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// 정규식으로 숫자만 받고 싶을때 사용하는 방법
 router.post('/like/:product_id(\\d+)', loginRequired, async (req, res) => {
     try {
         const product = await models.Products.findByPk(req.params.product_id);
         const user = await models.User.findByPk(req.user.id);
 
+        // Many To Many 저장하는 방법
+        // 중복이 발생하면 자동적으로 막아줌
         const status = await user.addLikes(product);
 
         res.json({status});
