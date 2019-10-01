@@ -30,4 +30,7 @@ router.post('/order/edit/:id', ctrl.post_order_edit);
 
 router.get('/statistics', ctrl.statistics);
 
+router.post('/tag', ctrl.write_tag);
+router.delete('/tag/:product_id/:tag_id', ctrl.delete_tag);
+
 module.exports = router;
