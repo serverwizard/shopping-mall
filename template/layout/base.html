@@ -71,6 +71,14 @@
                             {{ link( '/accounts/login' , "LOGIN" , req_path ) }}
                             {% endif %}
                         </ul>
+                        <form class="navbar-form navbar-left" method="get" action="/">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" required
+                                       value="{{ req_query.name }}"
+                                       placeholder="태그 또는 제품명 검색">
+                            </div>
+                            <button type="submit" class="btn btn-default">검색</button>
+                        </form>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <a href="/checkout/nomember">구매조회</a>
