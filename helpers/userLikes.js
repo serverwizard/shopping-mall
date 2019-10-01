@@ -4,6 +4,7 @@ const models = require('../models');
 module.exports = async (req) => {
     const userLikes = [];
     if (req.isAuthenticated()) {
+        // TODO 코드 개선이 필요한 부분 (만약 사용자가 좋아요 누른 제품이 500개라면, 500개를 항상 가지고 다녀야하는 문제가 발생)
         const user = await models.User.findOne({
             where: {id: req.user.id},
             include: ['Likes'],
