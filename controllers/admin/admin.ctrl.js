@@ -83,8 +83,24 @@ exports.post_product_detail = async (req, res) => {
 };
 
 exports.get_edit = async (req, res) => {
-    const product = await models.Products.findByPk(req.params.id);
-    res.render('admin/form.html', {product, csrfToken: req.csrfToken()});
+    try {
+        const product = await models.Products.findOne({
+            where: {id: req.params.id},
+            include: [
+                {model: models.Tag, as: 'Tag'}
+            ],
+            order: [
+                ['Tag', 'createdAt', 'desc']
+            ]
+        });
+
+        res.render('admin/form.html', {product, csrfToken: req.csrfToken()});
+
+    } catch (e) {
+
+    }
+
+
 };
 
 exports.post_edit = async (req, res) => {
