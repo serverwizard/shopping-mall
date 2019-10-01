@@ -50,7 +50,14 @@
                     </div>
 
                     <div id="tag_area">
-
+                        {% for tag in product.Tag %}
+                        <div class="icon_tag">
+                            {{ tag.name }}
+                            <a href="#" class="delete_tag" tag_id="{{ tag.id }}">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        {% endfor %}
                     </div>
                 </td>
             </tr>
@@ -128,24 +135,24 @@
                     }
                 }).done(function (result) {
 
-                        if (result.status.length) {
-                            var tag = result.tag;
-                            $('#tag_area').append('<div class="icon_tag">' + tag.name +
-                                ' <a href="#" class="delete_tag" tag_id="' + tag.id + '" > \
+                    if (result.status.length) {
+                        var tag = result.tag;
+                        $('#tag_area').append('<div class="icon_tag">' + tag.name +
+                            ' <a href="#" class="delete_tag" tag_id="' + tag.id + '" > \
                                     <i class="fa fa-times" aria-hidden="true"></i> \
                                  </a> \
                                 </div>');
 
-                            // 추가후 검색 초기화
-                            $('#tag_input').val('');
-                        } else {
-                            alert('이미 있는 등록된 태그입니다.');
-                        }
+                        // 추가후 검색 초기화
+                        $('#tag_input').val('');
+                    } else {
+                        alert('이미 있는 등록된 태그입니다.');
+                    }
 
-                    }).fail(function (result) {
-                        console.log(result);
-                        alert('오류 발생');
-                    });
+                }).fail(function (result) {
+                    console.log(result);
+                    alert('오류 발생');
+                });
             });
         });
     </script>
