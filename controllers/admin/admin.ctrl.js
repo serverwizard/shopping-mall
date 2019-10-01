@@ -2,6 +2,7 @@ const models = require('../../models');
 
 const paginate = require('express-paginate');
 
+// TODO 누구누구님이 좋아요 했습니다. 구현할 것
 /**
  * offset : 시작지점
  */
@@ -87,20 +88,18 @@ exports.get_edit = async (req, res) => {
         const product = await models.Products.findOne({
             where: {id: req.params.id},
             include: [
-                {model: models.Tag, as: 'Tag'}
+                {model: models.Tag, as: 'Tag'} // as 가 중요함, as명 안적고 접근할 수 있는 방법도 확인해 볼것
             ],
             order: [
-                ['Tag', 'createdAt', 'desc']
+                ['Tag', 'createdAt', 'desc'] // Products 안의 Tag 들을 desc로 정렬 해줌
             ]
-        });
+        }); // Products
 
         res.render('admin/form.html', {product, csrfToken: req.csrfToken()});
 
     } catch (e) {
 
     }
-
-
 };
 
 exports.post_edit = async (req, res) => {
@@ -241,14 +240,16 @@ exports.statistics = async (_, res) => {
 
 exports.write_tag = async (req, res) => {
     try {
-        const tag = await models.Tag.findOrCreate({
+        // findOrCreate(), 조회 후에 값이 없으면 생성하고 값이 있으면 그 값을 가져옴 (배열 형태로 리턴)
+        // tag[0] : 검색되었거나 또는 생성된 객체, tag[1] : boolean값, 객체가 생성되었을 경우 true, 그렇지 않을 경우 false
+        const tag = await models.Tag.findOrCreate({ // Tag
             where: {
                 name: req.body.name
             }
         });
 
         const product = await models.Products.findByPk(req.body.product_id);
-        const status = await product.addTag(tag[0]);
+        const status = await product.addTag(tag[0]); // TagProduct, status[0][0].dataValues 로 데이터 접근함
 
         res.json({
             status: status,
