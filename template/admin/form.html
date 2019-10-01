@@ -33,6 +33,28 @@
                               id="summernote">{{ product.description }}</textarea>
                 </td>
             </tr>
+            {# 수정시에만 작동한다 #}
+            {% if '/admin/products/edit/' in req_path %}
+            <tr>
+                <th>태그</th>
+                <td>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <input type="text" id="tag_input" class="form-control" placeholder="입력후 엔터 태그추가 버튼을 눌러주세요">
+                        </div>
+                        <div class="col-sm-7">
+                            <a class="btn btn-primary btn-sm btn_select" id="tag_submit" style="display: inline-block">
+                                태그 추가
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="tag_area">
+
+                    </div>
+                </td>
+            </tr>
+            {% endif %}
         </table>
         <button class="btn btn-primary">작성하기</button>
     </form>
