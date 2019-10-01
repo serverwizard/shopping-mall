@@ -102,6 +102,51 @@
                     }
                 });
             }
+
+            $('#tag_submit').click(function (e) {
+                e.preventDefault();
+                var $product_id = "{{ product.id }}";
+                var $tag_input = $('#tag_input');
+                if (!$tag_input.val()) {
+                    alert('태그명을 입력하세요');
+                    $tag_input.focus();
+                    return false;
+                }
+
+                if ($tag_input.val().length < 2) {
+                    alert('두글자 이상 입력하세요.');
+                    $tag_input.focus();
+                    return false;
+                }
+
+                $.ajax({
+                    url: '/admin/tag',
+                    type: 'post',
+                    data: {
+                        name: $tag_input.val().trim(),
+                        product_id: $product_id
+                    }
+                }).done(function (result) {
+
+                        if (result.status.length) {
+                            var tag = result.tag;
+                            $('#tag_area').append('<div class="icon_tag">' + tag.name +
+                                ' <a href="#" class="delete_tag" tag_id="' + tag.id + '" > \
+                                    <i class="fa fa-times" aria-hidden="true"></i> \
+                                 </a> \
+                                </div>');
+
+                            // 추가후 검색 초기화
+                            $('#tag_input').val('');
+                        } else {
+                            alert('이미 있는 등록된 태그입니다.');
+                        }
+
+                    }).fail(function (result) {
+                        console.log(result);
+                        alert('오류 발생');
+                    });
+            });
         });
     </script>
 </div>
