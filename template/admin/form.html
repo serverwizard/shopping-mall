@@ -154,6 +154,28 @@
                     alert('오류 발생');
                 });
             });
+
+            $(document).on('click', '.delete_tag', function (e) {
+                e.preventDefault();
+                if (!confirm('삭제하시겠습니까?')) {
+                    return false;
+                }
+
+                var product_id = "{{ product.id }}";
+                var $self = $(this);
+
+                $.ajax({
+                    url: '/admin/tag/' + product_id + '/' + $(this).attr('tag_id'),
+                    type: 'delete'
+                }).done(function (result) {
+                    if (result) {
+                        $self.parent().remove();
+                    }
+                }).fail(function (result) {
+                        console.log(result);
+                    });
+
+            });
         });
     </script>
 </div>
