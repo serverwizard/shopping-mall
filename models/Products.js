@@ -42,6 +42,17 @@ module.exports = function (sequelize, DataTypes) {
             sourceKey: 'id',
             constraints: false
         });
+
+        Products.belongsToMany( models.Tag ,{
+            through: {
+                model: 'TagProduct',
+                unique: false
+            },
+            as : 'Tag',
+            foreignKey: 'product_id',
+            sourceKey: 'id',
+            constraints: false
+        });
     };
 
     Products.prototype.dateFormat = (date) => (
