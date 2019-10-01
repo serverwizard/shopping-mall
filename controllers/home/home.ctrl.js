@@ -1,15 +1,19 @@
 const models = require('../../models');
 
-exports.index = async ( _ ,res) => {
+exports.index = async (req, res) => {
     const products = await models.Products.findAll({
-        include : [
+        include: [
             {
-                model : models.User ,
-                as : 'Owner',
-                attributes : [ 'username' , 'displayname' ]
+                model: models.User,
+                as: 'Owner',
+                attributes: ['username', 'displayname']
             },
         ]
     });
+
+    // 좋아요 내용을 가져온다
+    const userLikes = await require('../../helpers/userLikes')(req);
+
     // console.log(models.Products.findAll())
-    res.render( 'home.html' , { products });
+    res.render('home.html', {products, userLikes});
 };
