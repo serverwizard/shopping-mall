@@ -1,0 +1,1270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c5173340-38a2-4c31-890a-b971d468d3d6" name="Default Changelist" comment="[Day12] 회원리스트 페이지">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/camp14.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/promise.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/question.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <ignored mask=".iml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="camp14" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/accounts/accounts.ctrl.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/admin/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="560">
+              <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/contacts/contacts.ctrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/template/layout/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="354">
+              <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/macro/link.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" column="45" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>google.charts.load(&quot;current&quot;, {packages:[&quot;corechart&quot;]});</find>
+      <find>columnChart</find>
+      <find>csrfProte</find>
+      <find>User.j</find>
+      <find>paginate</find>
+      <find>dataValues</find>
+      <find>{% from</find>
+      <find>loginRequired</find>
+      <find>add_like</find>
+      <find>editor</find>
+      <find>session</find>
+      <find>Sessions</find>
+      <find>Like</find>
+      <find>LikesProducts</find>
+      <find>ici</find>
+      <find>.findAll</find>
+      <find>models.User</find>
+      <find>User.findAll</find>
+      <find>findAll</find>
+      <find>catch(</find>
+      <find>findByPk(</find>
+      <find>findByP</find>
+      <find>dateFormat</find>
+      <find>cookie</find>
+      <find>cookies</find>
+      <find>iamport</find>
+      <find>User.findAll(</find>
+      <find>models.User.</find>
+      <find>/products</find>
+      <find>{% endif %}</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="tk" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/models/CartItems.js" />
+        <option value="$PROJECT_DIR$/template/chat/index.html" />
+        <option value="$PROJECT_DIR$/template/cart/index.html" />
+        <option value="$PROJECT_DIR$/middleware/cart.js" />
+        <option value="$PROJECT_DIR$/controllers/home/index.js" />
+        <option value="$PROJECT_DIR$/template/admin/form.html" />
+        <option value="$PROJECT_DIR$/controllers/cart/index.js" />
+        <option value="$PROJECT_DIR$/controllers/cart/cart.ctrl.js" />
+        <option value="$PROJECT_DIR$/models/Checkout.js" />
+        <option value="$PROJECT_DIR$/template/checkout/success.html" />
+        <option value="$PROJECT_DIR$/models/Cart.js" />
+        <option value="$PROJECT_DIR$/controllers/accounts/accounts.ctrl.js" />
+        <option value="$PROJECT_DIR$/controllers/accounts/index.js" />
+        <option value="$PROJECT_DIR$/middleware/userCart.js" />
+        <option value="$PROJECT_DIR$/controllers/auth/auth.ctrl.js" />
+        <option value="$PROJECT_DIR$/controllers/auth/index.js" />
+        <option value="$PROJECT_DIR$/template/checkout/nomember.html" />
+        <option value="$PROJECT_DIR$/controllers/admin/index.js" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/template/admin/statistics.html" />
+        <option value="$PROJECT_DIR$/controllers/checkout/index.js" />
+        <option value="$PROJECT_DIR$/template/checkout/shipping.html" />
+        <option value="$PROJECT_DIR$/template/admin/order.html" />
+        <option value="$PROJECT_DIR$/template/checkout/search.html" />
+        <option value="$PROJECT_DIR$/template/admin/order_edit.html" />
+        <option value="$PROJECT_DIR$/controllers/checkout/checkout.ctrl.js" />
+        <option value="$PROJECT_DIR$/helpers/userLikes.js" />
+        <option value="$PROJECT_DIR$/template/macro/like.html" />
+        <option value="$PROJECT_DIR$/template/products/detail.html" />
+        <option value="$PROJECT_DIR$/static/common.js" />
+        <option value="$PROJECT_DIR$/controllers/products/index.js" />
+        <option value="$PROJECT_DIR$/controllers/admin/admin.ctrl.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/template/checkout/index.html" />
+        <option value="$PROJECT_DIR$/controllers/users/index.js" />
+        <option value="$PROJECT_DIR$/controllers/users/users.ctrl.js" />
+        <option value="$PROJECT_DIR$/controllers/index.js" />
+        <option value="$PROJECT_DIR$/template/layout/sidebar.html" />
+        <option value="$PROJECT_DIR$/template/users/detail.html" />
+        <option value="$PROJECT_DIR$/models/User.js" />
+        <option value="$PROJECT_DIR$/models/Products.js" />
+        <option value="$PROJECT_DIR$/template/users/list.html" />
+        <option value="$PROJECT_DIR$/template/macro/link.html" />
+        <option value="$PROJECT_DIR$/template/layout/base.html" />
+      </list>
+    </option>
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="x" value="320" />
+    <option name="y" value="180" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
+  </component>
+  <component name="ProjectId" id="1QxbUPiAsHF8ERJbE6LyQxKZEsz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="camp14" type="b2602c69:ProjectViewProjectNode" />
+              <item name="camp14" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.15.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/template/users" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/template/users" />
+      <recent name="$PROJECT_DIR$/static/img" />
+      <recent name="$PROJECT_DIR$/controllers/chat" />
+      <recent name="$PROJECT_DIR$/template/chat" />
+      <recent name="$PROJECT_DIR$/config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config" />
+      <recent name="$PROJECT_DIR$/uploads" />
+      <recent name="$PROJECT_DIR$/static/css" />
+      <recent name="$PROJECT_DIR$/config/development" />
+      <recent name="$PROJECT_DIR$/config/env" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="camp14" type="NodeJSConfigurationType" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c5173340-38a2-4c31-890a-b971d468d3d6" name="Default Changelist" comment="" />
+      <created>1566304015971</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1566304015971</updated>
+      <workItem from="1566304017251" duration="6195000" />
+      <workItem from="1566316360169" duration="2347000" />
+      <workItem from="1566470100542" duration="10279000" />
+      <workItem from="1566652245254" duration="3917000" />
+      <workItem from="1566901700225" duration="2206000" />
+      <workItem from="1566904844902" duration="5921000" />
+      <workItem from="1567074797748" duration="11590000" />
+      <workItem from="1567346381084" duration="643000" />
+      <workItem from="1567347028208" duration="24000" />
+      <workItem from="1567347054205" duration="139000" />
+      <workItem from="1567347195434" duration="191000" />
+      <workItem from="1567347389684" duration="74000" />
+      <workItem from="1567347467427" duration="43000" />
+      <workItem from="1567347513042" duration="5949000" />
+      <workItem from="1567379255455" duration="1553000" />
+      <workItem from="1567421140208" duration="4659000" />
+      <workItem from="1567505034945" duration="11893000" />
+      <workItem from="1567585217375" duration="276000" />
+      <workItem from="1567603101471" duration="6347000" />
+      <workItem from="1567649284881" duration="177000" />
+      <workItem from="1567678514931" duration="11176000" />
+      <workItem from="1567744265885" duration="3044000" />
+      <workItem from="1567828225086" duration="511000" />
+      <workItem from="1567954810628" duration="6817000" />
+      <workItem from="1567962592644" duration="13467000" />
+      <workItem from="1568528550285" duration="13077000" />
+      <workItem from="1568605594367" duration="8000" />
+      <workItem from="1568715213107" duration="188000" />
+      <workItem from="1568715416043" duration="63000" />
+      <workItem from="1568736394192" duration="1661000" />
+      <workItem from="1568887844866" duration="7000" />
+      <workItem from="1568887854955" duration="11017000" />
+      <workItem from="1568970160220" duration="351000" />
+      <workItem from="1569160207870" duration="19677000" />
+      <workItem from="1569230766841" duration="10695000" />
+      <workItem from="1569482715164" duration="118000" />
+      <workItem from="1569494947835" duration="1176000" />
+      <workItem from="1569503279121" duration="2430000" />
+      <workItem from="1569646730393" duration="789000" />
+      <workItem from="1569655460375" duration="768000" />
+      <workItem from="1569723533420" duration="8852000" />
+      <workItem from="1569802557904" duration="1914000" />
+      <workItem from="1569903063224" duration="705000" />
+    </task>
+    <task id="LOCAL-00092" summary="[Day10] 장바구니 모델 생성">
+      <created>1569179260786</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1569179260786</updated>
+    </task>
+    <task id="LOCAL-00093" summary="[Day10] 주소 Daum OpenAPI 연동">
+      <created>1569179345993</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1569179345993</updated>
+    </task>
+    <task id="LOCAL-00094" summary="[Day10] 결제 내역 조회 API 추가">
+      <created>1569179489374</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1569179489374</updated>
+    </task>
+    <task id="LOCAL-00095" summary="[Day10] 관리자 권한을 가진 사용자인지 체크하기 위해, 뷰로 쏴줄 user 데이터 추가">
+      <created>1569179608635</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1569179608635</updated>
+    </task>
+    <task id="LOCAL-00096" summary="[Day10] 사용자와 장바구니와의 관계 설정">
+      <created>1569179684582</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1569179684582</updated>
+    </task>
+    <task id="LOCAL-00097" summary="[Day10] 사이드바">
+      <created>1569179701078</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1569179701078</updated>
+    </task>
+    <task id="LOCAL-00098" summary="[Day10] 상품 목록 페이지에 사이드바 추가">
+      <created>1569179780124</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1569179780124</updated>
+    </task>
+    <task id="LOCAL-00099" summary="[Day10] iamporter 설치">
+      <created>1569179805655</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1569179805655</updated>
+    </task>
+    <task id="LOCAL-00100" summary="[Day10] 주문 리스트/주문 상세 페이지 구현">
+      <created>1569179881008</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1569179881008</updated>
+    </task>
+    <task id="LOCAL-00101" summary="[Day10] /admin 라우팅은 관리자만 접근하게 설정">
+      <created>1569179922531</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1569179922531</updated>
+    </task>
+    <task id="LOCAL-00102" summary="[Day10] 사이드바 추가">
+      <created>1569179994020</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1569179994020</updated>
+    </task>
+    <task id="LOCAL-00103" summary="[Day10] 장바구니 기능으로 인한 로그아웃 컨트롤러 수정">
+      <created>1569180285187</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1569180285187</updated>
+    </task>
+    <task id="LOCAL-00104" summary="[Day10] 장바구니 기능 미들웨어로 구현">
+      <created>1569180362443</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1569180362443</updated>
+    </task>
+    <task id="LOCAL-00105" summary="[Day10] 모델명 오타 수정">
+      <created>1569180512379</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1569180512379</updated>
+    </task>
+    <task id="LOCAL-00106" summary="[Day10] 로그인한 사용자일 경우, 장바구니 담을 때마다 DB에 저장">
+      <created>1569180672733</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1569180672733</updated>
+    </task>
+    <task id="LOCAL-00107" summary="[Day10] 관리자인지 체크하는 미들웨어">
+      <created>1569180783464</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1569180783464</updated>
+    </task>
+    <task id="LOCAL-00108" summary="[Day10] /admin 라우팅은 관리자만 접근하게 설정">
+      <created>1569180817223</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1569180817223</updated>
+    </task>
+    <task id="LOCAL-00109" summary="[Day10] 장바구니 페이지에 safe 설정">
+      <created>1569180851664</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1569180851664</updated>
+    </task>
+    <task id="LOCAL-00110" summary="[Day10] 로그인 전략이 local 일때, 장바구니 미들웨어 적용">
+      <created>1569180975405</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1569180975405</updated>
+    </task>
+    <task id="LOCAL-00111" summary="[Day10] OAuth 2.0 인증 성공시, 장바구니 셋팅">
+      <created>1569182225048</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1569182225048</updated>
+    </task>
+    <task id="LOCAL-00112" summary="[Day10] OAuth 2.0 인증 성공시, '홈'으로 리다이렉트">
+      <created>1569182254595</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1569182254595</updated>
+    </task>
+    <task id="LOCAL-00113" summary="[Day10] 로그인한 사용자일 경우, 장바구니 담을 때마다 Ajax 호출로 DB에 저장">
+      <created>1569182871328</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1569182871328</updated>
+    </task>
+    <task id="LOCAL-00114" summary="[Day11] 비회원 구매이력 조회 기능 구현">
+      <created>1569233158850</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1569233158850</updated>
+    </task>
+    <task id="LOCAL-00115" summary="[Day10] 비회원 구매이력 조회 구현2">
+      <created>1569233200945</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1569233200945</updated>
+    </task>
+    <task id="LOCAL-00116" summary="[Day11] 결제자수 통계 화면 구현">
+      <created>1569233416583</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1569233416583</updated>
+    </task>
+    <task id="LOCAL-00117" summary="[Day11] 사이드바 항목 추가 (결제자수 현황)">
+      <created>1569233480651</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1569233480651</updated>
+    </task>
+    <task id="LOCAL-00118" summary="[Day12] 사용자와 Products 사이의 관계 설정">
+      <created>1569799205795</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1569799205797</updated>
+    </task>
+    <task id="LOCAL-00119" summary="[Day11] Products 와 사용자 사이의 관계 설정">
+      <created>1569799245612</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1569799245612</updated>
+    </task>
+    <task id="LOCAL-00120" summary="[Day11] 좋아요 이미지 추가">
+      <created>1569799269461</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1569799269461</updated>
+    </task>
+    <task id="LOCAL-00121" summary="[Day12] 페이지 로딩시 사용자가 좋아요 누른 Products id 목록 조회">
+      <created>1569799409743</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1569799409743</updated>
+    </task>
+    <task id="LOCAL-00122" summary="[Day12] 크롤링을 위한 request-promise, cheerio 추가">
+      <created>1569799480832</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1569799480832</updated>
+    </task>
+    <task id="LOCAL-00123" summary="[Day12] 주문상세표 수정 및 결제 통계 현황 기능">
+      <created>1569799709695</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1569799709695</updated>
+    </task>
+    <task id="LOCAL-00124" summary="[Day12] 크롤링 기능 구현">
+      <created>1569799770290</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1569799770290</updated>
+    </task>
+    <task id="LOCAL-00125" summary="[Day12] 좋아요 클릭시, 서버 호출">
+      <created>1569799836069</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1569799836069</updated>
+    </task>
+    <task id="LOCAL-00126" summary="[Day12] 배송중일 때, 배송추적 기능 구현">
+      <created>1569799949032</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1569799949032</updated>
+    </task>
+    <task id="LOCAL-00127" summary="[Day12] 배송 추적 템플릿">
+      <created>1569800036959</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1569800036959</updated>
+    </task>
+    <task id="LOCAL-00128" summary="[Day12] 사이드바에 회원리스트 조회 기능 추가">
+      <created>1569800101266</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1569800101266</updated>
+    </task>
+    <task id="LOCAL-00129" summary="[Day12] 회원리스트 및 회원 상세정보 조회 기능">
+      <created>1569800142692</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1569800142692</updated>
+    </task>
+    <task id="LOCAL-00130" summary="[Day12] 회원 상세정보 페이지 구현">
+      <created>1569800177250</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1569800177250</updated>
+    </task>
+    <task id="LOCAL-00131" summary="[Day12] 회원리스트 페이지">
+      <created>1569800234861</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1569800234861</updated>
+    </task>
+    <task id="LOCAL-00132" summary="[Day12] 구글 차트를 이용한 통계 현황 페이지">
+      <created>1569800283642</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1569800283642</updated>
+    </task>
+    <task id="LOCAL-00133" summary="[Day12] 결제수단 추가 (신용카드, 실시간 계좌이체, 휴대폰 결제)">
+      <created>1569800446182</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1569800446182</updated>
+    </task>
+    <task id="LOCAL-00134" summary="[Day12] 회원관련 컨트롤러 추가">
+      <created>1569800480593</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1569800480593</updated>
+    </task>
+    <task id="LOCAL-00135" summary="[Day12] 매크로로 좋아요 기능 구현">
+      <created>1569800636793</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1569800636793</updated>
+    </task>
+    <task id="LOCAL-00136" summary="[Day12] 배송중일 때만, 배송추적 가능">
+      <created>1569800700685</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1569800700685</updated>
+    </task>
+    <task id="LOCAL-00137" summary="[Day12] 주문상세표에서 송장번호 수정 가능하도록 변경">
+      <created>1569800756550</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1569800756550</updated>
+    </task>
+    <task id="LOCAL-00138" summary="[Day12] 송장번호로 대한통운에서 현재 배송위치 조회">
+      <created>1569800876109</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1569800876109</updated>
+    </task>
+    <task id="LOCAL-00139" summary="[Day12] 상품 상세페이지에 좋아요 매크로 적용">
+      <created>1569801435211</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1569801435211</updated>
+    </task>
+    <task id="LOCAL-00140" summary="[Day12] 좋아요 관련 컨트롤러 추가">
+      <created>1569801532318</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1569801532318</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="47124000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13437001" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32996973" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.25227043" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="SonarLint" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="12" visible="true" weight="0.3530718" />
+      <window_info anchor="bottom" id="Reviews" order="13" />
+      <window_info anchor="bottom" id="Messages" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Preview" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+      <window_info anchor="right" id="Palette&#9;" order="9" />
+      <window_info anchor="right" id="News Feed" order="10" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[Day11] 결제자수 통계 화면 구현" />
+    <MESSAGE value="[Day11] 사이드바 항목 추가 (결제자수 현황)" />
+    <MESSAGE value="[Day12] 사용자와 Products 사이의 관계 설정" />
+    <MESSAGE value="[Day11] Products 와 사용자 사이의 관계 설정" />
+    <MESSAGE value="[Day11] 좋아요 이미지 추가" />
+    <MESSAGE value="[Day12] 페이지 로딩시 사용자가 좋아요 누른 Products id 목록 조회" />
+    <MESSAGE value="[Day12] 크롤링을 위한 request-promise, cheerio 추가" />
+    <MESSAGE value="[Day12] 주문상세표 수정 및 결제 통계 현황 기능" />
+    <MESSAGE value="[Day12] 크롤링 기능 구현" />
+    <MESSAGE value="[Day12] 좋아요 클릭시, 서버 호출" />
+    <MESSAGE value="[Day12] 배송중일 때, 배송추적 기능 구현" />
+    <MESSAGE value="[Day12] 배송 추적 템플릿" />
+    <MESSAGE value="[Day12] 사이드바에 회원리스트 조회 기능 추가" />
+    <MESSAGE value="[Day12] 회원리스트 및 회원 상세정보 조회 기능" />
+    <MESSAGE value="[Day12] 회원 상세정보 페이지 구현" />
+    <MESSAGE value="[Day12] 회원리스트 페이지" />
+    <MESSAGE value="[Day12] 구글 차트를 이용한 통계 현황 페이지" />
+    <MESSAGE value="[Day12] 결제수단 추가 (신용카드, 실시간 계좌이체, 휴대폰 결제)" />
+    <MESSAGE value="[Day12] 회원관련 컨트롤러 추가" />
+    <MESSAGE value="[Day12] 매크로로 좋아요 기능 구현" />
+    <MESSAGE value="[Day12] 배송중일 때만, 배송추적 가능" />
+    <MESSAGE value="[Day12] 주문상세표에서 송장번호 수정 가능하도록 변경" />
+    <MESSAGE value="[Day12] 송장번호로 대한통운에서 현재 배송위치 조회" />
+    <MESSAGE value="[Day12] 상품 상세페이지에 좋아요 매크로 적용" />
+    <MESSAGE value="[Day12] 좋아요 관련 컨트롤러 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Day12] 좋아요 관련 컨트롤러 추가" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/controllers/auth/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/checkout/nomember.js" />
+    <entry file="file://$PROJECT_DIR$/models/Cart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/checkout/nomember.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Checkout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="21" column="12" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/request-promise/lib/rp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/admin/order_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/middleware/csrf.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/admin/statistics.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="604">
+          <caret line="53" column="25" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/cheerio/lib/static.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/userLikes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/mysql2/lib/packets/packet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13660">
+          <caret line="683" column="16" selection-start-line="683" selection-start-column="16" selection-end-line="683" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/10.15.0/core-modules/internal/stream_base_commons.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1860">
+          <caret line="93" column="16" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/redis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" selection-start-line="4" selection-end-line="6" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/macro/like.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="14" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/mysql2/lib/commands/command.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="30" column="19" lean-forward="true" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1522">
+          <caret line="77" column="44" lean-forward="true" selection-start-line="77" selection-start-column="44" selection-end-line="77" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/contacts/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/contacts/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/checkout/shipping.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/checkout/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/home.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/contacts/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/cart/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="60" column="11" lean-forward="true" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/middleware/userCart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/chat/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/checkout/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="89" column="52" selection-start-line="89" selection-start-column="52" selection-end-line="89" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/User.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="17" column="18" lean-forward="true" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/layout/sidebar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/products/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="41" column="38" lean-forward="true" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/admin/products.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="622">
+          <caret line="57" column="14" selection-start-line="7" selection-end-line="57" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/admin/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="14" column="57" lean-forward="true" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/admin/order.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="27" lean-forward="true" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/users/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Products.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/users/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/admin/admin.ctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1160">
+          <caret line="58" column="33" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/checkout/checkout.ctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="99" column="10" lean-forward="true" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/checkout/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/users/users.ctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/users/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/products/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/accounts/accounts.ctrl.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/admin/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/contacts/contacts.ctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/macro/link.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/layout/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
