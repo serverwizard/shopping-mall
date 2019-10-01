@@ -161,6 +161,8 @@ class App {
 
             this.app.locals.req_user = req.user;
 
+            this.app.locals.req_query = req.query;
+
             next();
         });
     }
