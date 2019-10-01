@@ -1,0 +1,8 @@
+{#
+tags : 태그리스트
+#}
+{% macro view_tag( tags ) %}
+    {% for tag in tags %}
+        # {{ tag.name }}
+    {% endfor %}
+{% endmacro %}
