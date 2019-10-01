@@ -4,6 +4,9 @@
 {# 좋아요 불러오기 #}
 {% from "macro/like.html" import like %}
 
+{# 태그 불러오기 #}
+{% from "macro/tag.html" import view_tag %}
+
 {% block content -%}
 
 <div class="container" id="masonry_container">
@@ -20,6 +23,10 @@
                 )
             </p>
         </a>
+
+        <!-- 태그 불러오기 -->
+        {{ view_tag( product.Tag ) }}
+
         <span id="like_area_{{ product.id }}">
         {{ like( isLogin , product.id , userLikes ) }}
         </span>
