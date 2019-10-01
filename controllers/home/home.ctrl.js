@@ -8,6 +8,7 @@ exports.index = async (req, res) => {
                 as: 'Owner',
                 attributes: ['username', 'displayname']
             },
+            {model: models.Tag, as: 'Tag'}
         ]
     });
 
