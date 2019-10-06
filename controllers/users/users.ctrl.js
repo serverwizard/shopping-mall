@@ -11,7 +11,22 @@ exports.get_users = async (req, res) => {
 
 exports.get_user = async (req, res) => {
     try {
-        let user = await models.User.findByPk(req.params.id);
+        const user = await models.User.findOne({
+            where: {
+                id: req.params.id,
+            },
+            include: [
+                {
+                    model: models.Products,
+                    as: 'Likes',
+                    include: [
+                        'LikeUser',
+                        {model: models.Tag, as: 'Tag'},
+                    ]
+                },
+            ],
+        });
+
         res.render('users/detail.html', {user});
     } catch (err) {
         console.error(err);

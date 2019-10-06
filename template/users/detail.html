@@ -1,6 +1,9 @@
 {% set title = "사용자 : 상세페이지" %}
 {% extends "layout/base.html" %}
 
+{# 태그 불러오기 #}
+{% from "macro/tag.html" import view_tag %}
+
 {% block content -%}
 
 {% include "layout/sidebar.html" %}
@@ -8,7 +11,7 @@
 <div class="col-sm-10">
     <div class="panel panel-default">
         <div class="panel-heading">
-            회원
+            사용자 ID : {{ user.id }}
         </div>
         <div class="panel-body">
             <div style="padding-bottom: 10px">
@@ -32,6 +35,41 @@
             </div>
 
             <hr/>
+
+            {% if user.Likes.length > 0 %}
+            <div style="padding-bottom: 10px">
+                좋아요 누른 상품목록
+                <div class="container" id="masonry_container">
+                    {% for product in user.Likes %}
+                    <div class="masonry-grid">
+                        <a href="/products/{{ product.id }}">
+                            {% if product.thumbnail %}
+                            <img src="/uploads/{{ product.thumbnail }}">
+                            {% endif %}
+                            <p>
+                                {{ product.name }}<br/>
+                                by {{ product.Owner.displayname }} (
+                                {{ product.dateFormat( product.createdAt ) }}
+                                )
+                            </p>
+                        </a>
+
+                        <!-- 태그 불러오기 -->
+                        {{ view_tag( product.Tag ) }}
+
+                        <div class="likeInfo">
+                            {% if product.LikeUser and product.LikeUser.length > 0 %}
+                            {{ product.LikeUser[0].displayname }}님 외, {{ product.LikeUser.length }}명이 좋아합니다.
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <hr/>
+
         </div>
     </div>
 
