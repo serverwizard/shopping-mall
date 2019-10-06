@@ -3,13 +3,14 @@ const models = require('../../models');
 exports.index = async (req, res) => {
     const products = await models.Products.findAll({
         include: [
+            'LikeUser',
             {
                 model: models.User,
                 as: 'Owner',
                 attributes: ['username', 'displayname']
             },
             {model: models.Tag, as: 'Tag'}
-        ]
+        ],
     });
 
     // 좋아요 내용을 가져온다

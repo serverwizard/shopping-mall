@@ -27,6 +27,12 @@
         <!-- 태그 불러오기 -->
         {{ view_tag( product.Tag ) }}
 
+        <div class="likeInfo">
+            {% if product.LikeUser and product.LikeUser.length > 0 %}
+            {{ product.LikeUser[0].displayname }}님 외, {{ product.LikeUser.length }}명이 좋아합니다
+            {% endif %}
+        </div>
+
         <span id="like_area_{{ product.id }}">
         {{ like( isLogin , product.id , userLikes ) }}
         </span>
