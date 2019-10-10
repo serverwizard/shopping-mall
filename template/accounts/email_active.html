@@ -1,0 +1,21 @@
+{% set title = "계정확인" %}
+{% extends "layout/base.html" %}
+
+{% block content -%}
+
+<!--서브컨텐츠-->
+<div class="container">
+    <div class="login_area">
+        <h1 class="tit">이메일 인증완료</h1>
+        <p class="email_check_txt">
+            <em>{{ email }}</em>
+            로 로그인 해주세요
+            <br/><br/>
+        </p>
+        <div class="btn_area">
+            <a href="/accounts/login" type="submit" class="btn_submit">로그인 하러 가기</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
