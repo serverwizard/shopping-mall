@@ -75,13 +75,13 @@ class App {
             .then(() => {
                 console.log('Connection has been established successfully.');
                 // TODO 서버가 뜰 때, DB 테이블 자동으로 생성해줌
-                //  return db.sequelize.sync();
+                // return db.sequelize.sync();
                 // return db.sequelize.drop();
             })
             .then(() => {
                 console.log('DB Sync complete.');
                 // 더미 데이터가 필요하면 아래 설정
-                //  require('./config/insertDummyData')();
+                // require('./config/insertDummyData')();
             })
             .catch(err => {
                 console.error('Unable to connect to the database:', err);
@@ -161,6 +161,7 @@ class App {
 
             this.app.locals.req_user = req.user;
 
+            // 검색창에 입력한 검색어 출력을 위해 선언
             this.app.locals.req_query = req.query;
 
             next();
