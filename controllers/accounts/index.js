@@ -44,9 +44,9 @@ passport.use(new LocalStrategy({
         // 유저에서 조회되지 않을시
         if (!user) {
             return done(null, false, {message: '일치하는 아이디 패스워드가 존재하지 않습니다.'});
-
-            // 유저에서 조회 되면 세션등록쪽으로 데이터를 넘김 (세션으로 넘길 데이터)
-        } else {
+        } else if (user.status == "이메일미인증") { // 이메일 인증이 되지 않을시
+            return done(null, false, {message: '이메일 인증을 진행해주세요.'});
+        } else { // 이메일 인증되면 세션등록쪽으로 데이터를 넘김 (세션으로 넘길 데이터)
             console.log('user : ' + user);
             console.log('user.dataValues : ' + user.dataValues);
 
@@ -65,5 +65,11 @@ router.post('/login',
     }), userCart, ctrl.post_login);
 router.get('/success', ctrl.get_success);
 router.get('/logout', ctrl.get_logout);
+
+// 이메일 인증하라고 알려주는 페이지
+router.get('/join/check', ctrl.join_check);
+
+// 사용자가 이메일 인증시 요청을 받는 컨트롤러
+router.get('/join/validate', ctrl.join_validate);
 
 module.exports = router;
