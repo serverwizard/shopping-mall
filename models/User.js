@@ -18,8 +18,10 @@ module.exports = (sequelize, DataTypes) => {
                 },
                 allowNull: false
             },
+            // 이메일 인증 여부
+            status: {type: DataTypes.STRING},
             // 닉네임
-            displayname: {type: DataTypes.STRING}
+            displayname: {type: DataTypes.STRING},
         }, {
             tableName: 'User'
         }
@@ -59,6 +61,12 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'user_id',
             sourceKey: 'id',
             constraints: false
+        });
+
+        // 이메일인증관련
+        User.hasMany(models.EmailKey, {
+            foreignKey: 'user_id',
+            sourceKey: 'id'
         });
     };
 
