@@ -1,8 +1,12 @@
 {#
 tags : 태그리스트
+
+사실 태그 전용 Controller(URI)를 별도로 만들어줘야 함
 #}
-{% macro view_tag( tags ) %}
+{% macro view_tag(  tags ) %}
     {% for tag in tags %}
+    <a href="/?name={{ tag.name }}">
         # {{ tag.name }}
+    </a>
     {% endfor %}
 {% endmacro %}
