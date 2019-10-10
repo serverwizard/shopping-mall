@@ -11,6 +11,7 @@ router.get('/:id', async (req, res) => {
             include: [
                 {model: models.Tag, as: 'Tag'}
             ],
+            // Product 안에있는 Tag들을 orderBy
             order: [
                 ['Tag', 'createdAt', 'desc']
             ]
