@@ -45,7 +45,7 @@ passport.use(new LocalStrategy({
         if (!user) {
             return done(null, false, {message: '일치하는 아이디 패스워드가 존재하지 않습니다.'});
         } else if (user.status == "이메일미인증") { // 이메일 인증이 되지 않을시
-            return done(null, false, {message: '이메일 인증을 진행해주세요.'});
+            return done(null, false, {message: `이메일 인증을 진행해주세요.( <a href=/accounts/join/resend?email=${username}>인증 메일 재전송</a> )`});
         } else { // 이메일 인증되면 세션등록쪽으로 데이터를 넘김 (세션으로 넘길 데이터)
             console.log('user : ' + user);
             console.log('user.dataValues : ' + user.dataValues);
@@ -69,7 +69,13 @@ router.get('/logout', ctrl.get_logout);
 // 이메일 인증하라고 알려주는 페이지
 router.get('/join/check', ctrl.join_check);
 
-// 사용자가 이메일 인증시 요청을 받는 컨트롤러
+// 사용자가 이메일 인증시 validation 처리
 router.get('/join/validate', ctrl.join_validate);
+
+// 인증 이메일 전송
+router.post('/join/send', ctrl.join_send);
+
+// 이메일 인증을 재전송하는 페이지
+router.get('/join/resend', ctrl.join_resend);
 
 module.exports = router;

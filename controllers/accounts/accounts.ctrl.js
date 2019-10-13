@@ -122,3 +122,55 @@ exports.join_validate = async (req, res) => {
 
     }
 };
+
+exports.join_send = async (req, res) => {
+    // 환경 설정 변수 관련
+    const dotenv = require('dotenv');
+    dotenv.config(); // LOAD CONFIG
+
+    try {
+        // 회원가입시 DB에 저장했던 사용자 정보 조회
+        const user = await models.User.findOne({
+            where: {
+                username: req.body.to
+            }
+        });
+
+        // 기존 인증키 삭제
+        await models.EmailKey.destroy({
+            where: {
+                user_id: user.id
+            }
+        });
+
+        // 새로운 인증키 생성후 DB 삽입
+        const hash_key = require('../../helpers/genKey')(user.id);
+        await models.EmailKey.create({
+            hash_key,
+            user_id: user.id
+        });
+
+        // 인증 메일 발송
+        const template = require('../../helpers/email/joinTemplate');
+        const sigin_up_url = `${process.env.SITE_DOMAIN}/accounts/join/validate?hash_key=${hash_key}`;
+
+        await require('../../helpers/email/sendMail')({
+            to: user.username,
+            subject: "serverwizard 노드쇼핑몰 가입 인증메일 입니다.",
+            mail_body: template(sigin_up_url)
+        });
+
+        res.json(`/accounts/join/check?email=${user.username}`);
+
+    } catch (e) {
+        console.log(e)
+        res.send('<script> \
+            alert("양식에 맞게 작성해주세요. 또는 관리자에게 문의해주세요."); \
+            history.go(-1); \
+        </script>')
+    }
+};
+
+exports.join_resend = (req, res) => {
+    res.render('accounts/email_resend.html', {email: req.query.email});
+};
