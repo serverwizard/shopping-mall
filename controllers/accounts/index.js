@@ -10,6 +10,8 @@ const passwordHash = require('../../helpers/passwordHash');
 
 const userCart = require('../../middleware/userCart');
 
+const recaptcha = require('../../middleware/recapcha');
+
 // Registers a function used to serialize user objects into the session. (로그인 할 때, 딱 한번만)
 passport.serializeUser((user, done) => { // callback 함수가 실행됨, Strategy 성공 시 호출됨
     console.log('serializeUser');
@@ -55,8 +57,8 @@ passport.use(new LocalStrategy({
     }
 ));
 
-router.get('/join', ctrl.get_join);
-router.post('/join', ctrl.post_join);
+router.get('/join', recaptcha.middleware.render, ctrl.get_join);
+router.post('/join', recaptcha.middleware.verify, ctrl.post_join); // request 객체에 변수가 하나 추가되는 꼴 (recaptcha.middleware.verify)
 router.get('/login', ctrl.get_login);
 router.post('/login',
     passport.authenticate('local', {

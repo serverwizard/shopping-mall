@@ -1,13 +1,22 @@
 const models = require('../../models');
 
 exports.get_join = (req, res) => {
-    res.render('accounts/join.html', {joinError: req.flash('joinError')});
+    res.render('accounts/join.html', {
+        captcha: res.recaptcha,
+    });
 };
 
 exports.post_join = async (req, res) => {
     // 환경 설정 변수 관련
     const dotenv = require('dotenv');
     dotenv.config(); // LOAD CONFIG
+
+    if (req.recaptcha.error) { // request에 recaptcha가 추가됨, recaptcha.middleware.verify 미들웨어 때문에
+        return res.send('<script> \
+                alert("로봇이 아닙니다를 체크해주세요."); \
+                history.go(-1); \
+            </script>')
+    }
 
     try {
         // body 데이터 삽입
