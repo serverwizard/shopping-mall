@@ -67,6 +67,9 @@ class App {
 
         // 라우팅
         this.getRouting();
+
+        // 위의 라우팅에서 해당 라우터가 없으면 404 페이지를 찾을수가 없음 노출
+        this.status404();
     }
 
     dbConnection() {
@@ -170,6 +173,12 @@ class App {
 
     getRouting() {
         this.app.use(require('./controllers'));
+    }
+
+    status404() {
+        this.app.use((req, res, _) => { // '_' next function을 뜻함
+            res.status(404).render('common/404.html')
+        });
     }
 }
 
