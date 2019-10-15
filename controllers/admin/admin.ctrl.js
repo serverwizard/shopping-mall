@@ -275,3 +275,24 @@ exports.delete_tag = async (req, res) => {
 
     }
 };
+
+exports.s3_upload = async (req, res) => {
+    try {
+        // 이전에 저장되어있는 파일명을 받아오기 위함
+        const product = await models.Products.findByPk(req.params.id);
+
+        // 파일요청이면 파일명을 담고 아니면 이전 DB에서 가져온다
+        // req.file.location : s3에 저장된 풀 주소
+        req.body.thumbnail = (req.file) ? req.file.location : product.thumbnail;
+
+        await models.Products.update(
+            req.body, {
+                where: {id: req.params.id}
+            }
+        );
+        res.redirect('/admin/products/detail/' + req.params.id);
+
+    } catch (e) {
+        console.error(e);
+    }
+};

@@ -4,6 +4,7 @@ const ctrl = require('./admin.ctrl');
 const csrfProtection = require('../../middleware/csrf');
 
 const upload = require('../../middleware/multer');
+const upload_s3 = require('../../middleware/multer-s3');
 
 const paginate = require('express-paginate');
 
@@ -32,5 +33,7 @@ router.get('/statistics', ctrl.statistics);
 
 router.post('/tag', ctrl.write_tag);
 router.delete('/tag/:product_id/:tag_id', ctrl.delete_tag);
+
+router.post('/upload/:group/:id', upload_s3.single('thumbnail'), csrfProtection, ctrl.s3_upload);
 
 module.exports = router;
