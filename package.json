@@ -35,7 +35,7 @@
     "redis": "^2.8.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
-    "sequelize": "^4.42.0",
+    "sequelize": "^5.15.1",
     "socket.io": "^2.2.0"
   }
 }
